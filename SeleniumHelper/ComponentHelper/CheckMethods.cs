@@ -20,5 +20,17 @@ namespace SeleniumHelper.ComponentHelper
                 return false;
             }
         }
+        public static bool CheckCount(By first, By last , IWebDriver WebDriver)
+        {
+            IWebElement cartCount = WebDriver.FindElement(first);
+            IWebElement orderCount = WebDriver.FindElement(last);
+            int cartNumber = int.Parse(cartCount.Text);
+            int orderNumber = int.Parse(orderCount.Text);
+            if (cartNumber == orderNumber)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

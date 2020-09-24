@@ -1,5 +1,6 @@
 ﻿using ExtraAutomationTesting;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using SeleniumHelper.Base;
 using SeleniumHelper.ComponentHelper;
 using SingularQATestService;
@@ -21,6 +22,10 @@ namespace ExtraAutomation.TestCases
         public static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         public static string PasswordInput = "//input[@placeholder='პაროლი']";
         public static string LogginButton = "//app-sign-in-page//button[text()=' შესვლა ']";
+        public Login(IWebDriver webDriver)
+        {
+            WebDriver = webDriver;
+        }
 
         [Test, Category("Login Test")]
         public void TestLogin()

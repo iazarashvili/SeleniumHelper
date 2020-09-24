@@ -39,7 +39,7 @@ namespace ExtraAutomationTesting
         {
             WebDriver.Navigate().GoToUrl(Login.HostUrl);
             WebDriver.Manage().Window.Maximize();
-            Thread.Sleep(3000);
+            
         }
 
     }

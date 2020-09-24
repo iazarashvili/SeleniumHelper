@@ -65,7 +65,7 @@ namespace SingularQATestService
             catch { throw new Exception("Failed to send keys."); }
         }
         
-        public static bool Wait(IWebDriver drv, ElementLocator selector, string element, int seconds = 10)
+        public static bool Wait(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
         {
             var wait = new WebDriverWait(drv, TimeSpan.FromSeconds(seconds));
             try
@@ -79,7 +79,7 @@ namespace SingularQATestService
                 return false;
             }
         }
-        public static bool WaitToBeClickable(IWebDriver drv, ElementLocator selector, string element, int seconds = 10)
+        public static bool WaitToBeClickable(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
         {
             var wait = new WebDriverWait(drv, TimeSpan.FromSeconds(seconds));
             try
@@ -93,7 +93,7 @@ namespace SingularQATestService
                 return false;
             }
         }
-        public static IWebElement WaitTillElementDisplayed(IWebDriver driver, string locator,  ElementLocator elementLocatorType = ElementLocator.Xpath, int TimeOutForFindingElement = 10)
+        public static IWebElement WaitTillElementDisplayed(IWebDriver driver, string locator,  ElementLocator elementLocatorType = ElementLocator.Xpath, int TimeOutForFindingElement = 15)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(TimeOutForFindingElement));
 
