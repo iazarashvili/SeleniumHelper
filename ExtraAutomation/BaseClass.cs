@@ -31,7 +31,7 @@ namespace ExtraAutomationTesting
         [TearDown]
         protected void DoAfterEach()
         {
-            //WebDriver.Close();
+            WebDriver.Close();
         }
         [SetUp]
 

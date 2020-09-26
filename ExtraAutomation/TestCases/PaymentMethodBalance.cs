@@ -2,28 +2,31 @@
 using SingularQATestService;
 using SeleniumHelper.Base;
 using NUnit.Framework;
+using System.Threading;
 
 namespace ExtraAutomation.TestCases
 {
     [TestFixture]
     class PaymentMethodBalance : BaseClass
     {
-        public static string SearchInput = "//div[@id='header']//div//div//div//div//input";
-        public static string SearchButton ="//div[@class='rounded-lg search-wrap w-100 h-60px w-100" +
-            " bg-gray-550 d-flex align-items-center']//child::button";
-        public static string AddProduct = "//button[text()=' კალათაში დამატება ']";
-        public static string Basket = "//span[text()='კალათა']";
-        public static string ShopButton = "//button[text()=' ყიდვა ']";
-
-        public static string PaymentByCardButton = "//span[text()='ბარათით გადახდა']";
-        public static string OrderCompleteButton = "//button[text()=' შეკვეთის დასრულება ']";
-
-        [Test, Category("Paymant Method Balance")]
+      
+        [Test, Category("Paymant Test Balance")]
         public void PaymantTestBalance()
         {
             var login = new Login(WebDriver);
             login.TestLogin();
-            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, SearchInput, "80509");
+            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchInput, "80509");
+            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
+
+            Thread.Sleep(500);
+            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.addProductButton);
+
+            Thread.Sleep(500);
+            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.getBasket);
+
+            BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
+            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
+
         }
     }
 }

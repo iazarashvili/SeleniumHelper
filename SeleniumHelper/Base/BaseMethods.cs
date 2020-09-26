@@ -79,6 +79,14 @@ namespace SingularQATestService
                 return false;
             }
         }
+
+        public static IWebElement WaitElement(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
+        {
+            var wait = new WebDriverWait(drv, TimeSpan.FromSeconds(seconds));
+              webElement =  wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(element)));
+                return webElement;
+        }
+
         public static bool WaitToBeClickable(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
         {
             var wait = new WebDriverWait(drv, TimeSpan.FromSeconds(seconds));
@@ -119,8 +127,5 @@ namespace SingularQATestService
             }
             return webElement;
         }
-
-       
-        
     }
 }
