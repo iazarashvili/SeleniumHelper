@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using OpenQA.Selenium;
 using SeleniumHelper.Base;
 using SingularQATestService;
+
 
 namespace SeleniumHelper.ComponentHelper
 {
@@ -16,7 +18,7 @@ namespace SeleniumHelper.ComponentHelper
             }
             catch (NotFoundException e)
             {
-                Console.WriteLine("Username not ound" , e);
+                Console.WriteLine("Username not found" , e.Message);
                 return false;
             }
         }
@@ -32,5 +34,27 @@ namespace SeleniumHelper.ComponentHelper
             }
             return false;
         }
+
+        public static bool CheckMoney(string orderTotalAmount, string costOfTheItem , string deliveryCost, IWebDriver webdriver)
+        {
+            IWebElement orderPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, orderTotalAmount);
+            decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
+
+            IWebElement itemPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, costOfTheItem);
+            decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
+
+            IWebElement deliveryPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, deliveryCost);
+            int delivery = int.Parse(deliveryPrice.Text);
+
+            if ((delivery == 0) && (priceOrder == priceItem))
+            {
+                return true;
+            }
+            if((delivery == 5) && (priceItem < priceOrder))
+            {
+                return true;
+            }
+            return false;
+        }   
     }
 }

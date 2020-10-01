@@ -8,13 +8,12 @@ using System;
 
 namespace ExtraAutomation.TestCases
 {
-    [TestFixture]
+
     public class Login : BaseClass
     {
-
         public static string HostUrl = "https://extra.ge";
         public static string MyEmail = "595300019";
-        public static string MyPassword = "Extra2020";
+        public static string MyPassword = "extra2020";
         public static string SignInButton = "//span[text()='შესვლა']";
         private static string checkedlocator = "//span[contains(text(),'test ')]";
 
@@ -22,12 +21,7 @@ namespace ExtraAutomation.TestCases
         public static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         public static string PasswordInput = "//input[@placeholder='პაროლი']";
         public static string LogginButton = "//app-sign-in-page//button[text()=' შესვლა ']";
-        public Login(IWebDriver webDriver)
-        {
-            WebDriver = webDriver;
-        }
-
-        [Test, Category("Login Test")]
+  
         public void TestLogin()
         {
             try
@@ -53,10 +47,14 @@ namespace ExtraAutomation.TestCases
                 }
                 Console.WriteLine("Login test Sucsess");
             }
-            catch (TimeoutException e)
+            catch (ElementNotVisibleException e)
             {
                 Console.WriteLine("Test failded", e.Message);
             }
+        }
+        public Login(IWebDriver webDriver)
+        {
+            WebDriver = webDriver;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ExtraAutomation.TestCases
         public static By findCountProduct = By.XPath("//div[@class='mr-md-30px flex-grow-1']//div//div//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']//a[1]");
 
        
-        public static string DeleteBasket = "/html/body/app-root/div[1]/app-basket-page/div/div/div/div[1]/div/div[1]/div[2]/div/a/svg/path";
+        public static string DeleteBasket = "//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']/child::a";
         public static string addProductHomePage = "//div[contains(@class,'slider-container')][1]//app-product-item[2]//button[contains(text(),'დამატება')]";
         public static string basketButton = "//span[text()='კალათა']";
         public static string basketInButton = "//app-basket//button[contains(text(),'კალათა')]";
@@ -49,6 +49,7 @@ namespace ExtraAutomation.TestCases
             Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
             BaseMethods.Wait(WebDriver, ElementLocator.Xpath, deductProduct);
             BaseMethods.Click(WebDriver, ElementLocator.Xpath, deductProduct);
+            Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
             Thread.Sleep(2000);
 
             int element = WebDriver.FindElements(findCountProduct).Count;

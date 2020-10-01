@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ExtraAutomation
 {
-    class PaymentsLocators
+    public class PaymentsLocators
     {
         public static string SearchInput = "//div[@id='header']//div//div//div//div//input";
         public static string SearchButton = "//div[@class='rounded-lg search-wrap w-100 h-60px w-100" +
@@ -17,5 +17,10 @@ namespace ExtraAutomation
         public static string OrderCompleteButton = "//button[text()=' შეკვეთის დასრულება ']";
 
         public static string popupModal = "//*[@id='PopupSignupForm_0']/div[2]/div[1]";
+
+        public static string orderTotalAmount = "//span[@class='text-rebeccapurple font-bold font-size-16 d-flex align-items-center']";
+        public static string costOfTheItem = "//span[@class='text-rebeccapurple font-bold font-size-sm-16 font-size-12 d-flex align-items-center']";
+        public static string cityName = "//span[@class='ng-value-label']";
+        public static string deliveryCost = "//span[text()='მიტანის ღირებულება:']/following-sibling::var";
     }
 }
