@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using OpenQA.Selenium;
 using SeleniumHelper.Base;
 using SingularQATestService;
@@ -35,7 +36,7 @@ namespace SeleniumHelper.ComponentHelper
             return false;
         }
 
-        public static bool CheckMoney(string orderTotalAmount, string costOfTheItem , string deliveryCost, IWebDriver webdriver)
+        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem ,string deliveryCost, IWebDriver webdriver)
         {
             IWebElement orderPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
@@ -43,18 +44,25 @@ namespace SeleniumHelper.ComponentHelper
             IWebElement itemPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
 
-            IWebElement deliveryPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, deliveryCost);
-            int delivery = int.Parse(deliveryPrice.Text);
+            IWebElement deliveryPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Name, deliveryCost);
+
+            string first = deliveryPrice.Text;
+            string[] word = first.Split('₾');
+            int delivery = int.Parse(word[0], NumberStyles.Any);
 
             if ((delivery == 0) && (priceOrder == priceItem))
             {
                 return true;
             }
-            if((delivery == 5) && (priceItem < priceOrder))
+            if((delivery == 5) && (priceOrder < priceItem ))
             {
                 return true;
             }
             return false;
         }   
+        public static void CheckedAndUncheckedBoxes(IWebDriver webDriver, string paymentMethod)
+        {
+            
+        }
     }
 }

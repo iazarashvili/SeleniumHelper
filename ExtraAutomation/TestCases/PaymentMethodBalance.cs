@@ -4,6 +4,7 @@ using SeleniumHelper.Base;
 using NUnit.Framework;
 using System.Threading;
 using SeleniumHelper.ComponentHelper;
+using OpenQA.Selenium;
 
 namespace ExtraAutomation.TestCases
 {
@@ -16,7 +17,7 @@ namespace ExtraAutomation.TestCases
         {
             var login = new Login(WebDriver);
             login.TestLogin();
-            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchInput, "80509");
+            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchKeywordInputField, "80509");
             BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
 
             Thread.Sleep(700);
@@ -28,8 +29,8 @@ namespace ExtraAutomation.TestCases
             BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
             BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
 
-           Assert.True(CheckMethods.CheckMoney(PaymentsLocators.orderTotalAmount, PaymentsLocators.costOfTheItem, PaymentsLocators.deliveryCost, WebDriver));
-
+           Assert.True(CheckMethods.CheckPaymentMethod(PaymentsLocators.orderTotalAmount, PaymentsLocators.costOfTheItem, PaymentsLocators.deliveryCost, WebDriver));
+            Thread.Sleep(500);
         }
     }
 }

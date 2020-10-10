@@ -15,7 +15,7 @@ namespace ExtraAutomation.TestCases
         {
             var login = new Login(WebDriver);
             login.TestLogin();
-            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchInput, "80509");
+            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchKeywordInputField, "80509");
             BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
 
             Thread.Sleep(500);

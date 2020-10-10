@@ -12,12 +12,14 @@ namespace ExtraAutomationTesting
     {
         protected IWebDriver WebDriver;
 
+        //D:\Projects\ExtraAuto\SeleniumHelper\SeleniumHelper\Driver
+        //G:\Extra\New Project Auto\SeleniumHelper\SeleniumHelper\Driver
         [OneTimeSetUp]
         protected void DoBeforeAllTheTest()
         {
             var chromeOption = new ChromeOptions();
             chromeOption.PageLoadStrategy = PageLoadStrategy.Normal;
-            WebDriver = new ChromeDriver(@"G:\Extra\New Project Auto\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
+            WebDriver = new ChromeDriver(@"D:\Projects\ExtraAuto\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
            
         }
 
@@ -32,6 +34,7 @@ namespace ExtraAutomationTesting
         protected void DoAfterEach()
         {
             WebDriver.Close();
+            WebDriver.Quit();
         }
         [SetUp]
 

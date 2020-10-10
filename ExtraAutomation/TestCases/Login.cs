@@ -15,7 +15,7 @@ namespace ExtraAutomation.TestCases
         public static string MyEmail = "595300019";
         public static string MyPassword = "extra2020";
         public static string SignInButton = "//span[text()='შესვლა']";
-        private static string checkedlocator = "//span[contains(text(),'test ')]";
+        private static string checkedlocator = "//span[contains(text(),'ილია ')]";
 
 
         public static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
