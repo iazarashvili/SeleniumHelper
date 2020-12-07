@@ -7,6 +7,8 @@ namespace ExtraAutomation
 {
     public class PaymentsLocators
     {
+        //chasadebia Wait metodebshi
+        public static string Popup = "//*[@id='PopupSignupForm_0']/div[2]/div[1]";
         
         public static string SearchKeywordInputField = "//div[@id='header']//div//div//div//div//input";
         public static string SearchButton = "//div[@class='rounded-lg search-wrap w-100 h-60px w-100" +
@@ -25,7 +27,7 @@ namespace ExtraAutomation
         //სულ თანხა
         public static string costOfTheItem = "//span[@class='text-rebeccapurple font-bold font-size-sm-16 font-size-12 d-flex align-items-center']";
         
-        public static string deliveryCost = "//var[contains(text(),'5 ₾')]";
+        public static string deliveryCost = "//span[text()='მიტანის ღირებულება:']/following-sibling::var";
        
         //ბალანსით გადახდის მეთოდის მონიშვნა
         public static string paymentMethod = "//span[text()='ბალანსით გადახდა']/preceding-sibling::span";

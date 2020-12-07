@@ -64,30 +64,7 @@ namespace SingularQATestService
             }
             catch { throw new Exception("Failed to send keys."); }
         }
-        //public static void Findelement(IWebDriver drv, ElementLocator selector, string element)
-        //{
-        //    try
-        //    {
-        //        switch (selector)
-        //        {
-        //            case ElementLocator.Id:
-        //                drv.FindElement(By.Id(element));
-        //                break;
-        //            case ElementLocator.Class:
-        //                drv.FindElement(By.ClassName(element));
-        //                break;
-        //            case ElementLocator.Xpath:
-        //                drv.FindElement(By.XPath(element));
-        //                break;
-        //            case ElementLocator.Name:
-        //                drv.FindElement(By.Name(element));
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //    catch { throw new Exception("Failed to send keys."); }
-        //}
+    
 
         public static bool Wait(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
         {

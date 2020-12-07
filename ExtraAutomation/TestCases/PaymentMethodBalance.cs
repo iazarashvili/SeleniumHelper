@@ -1,10 +1,8 @@
 ﻿using ExtraAutomationTesting;
-using SingularQATestService;
-using SeleniumHelper.Base;
 using NUnit.Framework;
-using System.Threading;
 using SeleniumHelper.ComponentHelper;
-using OpenQA.Selenium;
+using System.Threading;
+using System;
 
 namespace ExtraAutomation.TestCases
 {
@@ -17,17 +15,18 @@ namespace ExtraAutomation.TestCases
         {
             var login = new Login(WebDriver);
             login.TestLogin();
-            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchKeywordInputField, "80509");
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
+            //BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchKeywordInputField, "80509");
+            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
 
-            Thread.Sleep(700);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.addProductButton);
+            //Thread.Sleep(700);
+            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.addProductButton);
 
-            Thread.Sleep(500);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.getBasket);
+            //Thread.Sleep(500);
+            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.getBasket);
 
-            BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
+            //BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
+            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
+            PaymentTestHelpMethods.GetCheckoutPage(WebDriver);
 
            Assert.True(CheckMethods.CheckPaymentMethod(PaymentsLocators.orderTotalAmount, PaymentsLocators.costOfTheItem, PaymentsLocators.deliveryCost, WebDriver));
             Thread.Sleep(500);

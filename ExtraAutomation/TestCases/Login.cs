@@ -13,26 +13,27 @@ namespace ExtraAutomation.TestCases
     {
         public static string HostUrl = "https://extra.ge";
         public static string MyEmail = "595300019";
-        public static string MyPassword = "extra2020";
+        public static string MyPassword = "Extra2020";
         public static string SignInButton = "//span[text()='შესვლა']";
-        private static string checkedlocator = "//span[contains(text(),'ილია ')]";
+        private static string checkedlocator = "//span[contains(text(),'ტესტ ')]";
 
 
         public static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         public static string PasswordInput = "//input[@placeholder='პაროლი']";
         public static string LogginButton = "//app-sign-in-page//button[text()=' შესვლა ']";
-  
+
         public void TestLogin()
         {
             try
             {
-                if (BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, SignInButton))
+                if  (BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, SignInButton)) 
                 {
+                    PaymentTestHelpMethods.ClosePopup(WebDriver);
                     BaseMethods.Click(WebDriver, ElementLocator.Xpath, SignInButton);
                     if (BaseMethods.Wait(WebDriver, ElementLocator.Xpath, LoginInputButton) &&
                         BaseMethods.Wait(WebDriver, ElementLocator.Xpath, PasswordInput))
                     {
-
+                        PaymentTestHelpMethods.ClosePopup(WebDriver);
                         BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, LoginInputButton, MyEmail);
                         BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PasswordInput, MyPassword);
                         BaseMethods.Click(WebDriver, ElementLocator.Xpath, LogginButton);
