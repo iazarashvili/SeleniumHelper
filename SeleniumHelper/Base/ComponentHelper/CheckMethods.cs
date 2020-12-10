@@ -16,9 +16,9 @@ namespace SeleniumHelper.ComponentHelper
                 BaseMethods.WaitTillElementDisplayed(driver, locator, ElementLocator.Xpath);
                 return true;
             }
-            catch (NotFoundException e)
+            catch (NotFoundException ex)
             {
-                Console.WriteLine("Username not found" , e.Message);
+                Console.WriteLine("Username not found" , ex);
                 return false;
             }
         }

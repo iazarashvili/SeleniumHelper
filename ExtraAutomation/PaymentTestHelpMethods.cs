@@ -10,16 +10,16 @@ namespace ExtraAutomation
         public static void GetCheckoutPage(IWebDriver WebDriver)
         {
             BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchKeywordInputField, "11125");
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
 
             Thread.Sleep(500);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.addProductButton);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, PaymentsLocators.addProductButton);
 
             Thread.Sleep(500);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.getBasket);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, PaymentsLocators.getBasket);
 
             BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
         }
 
       

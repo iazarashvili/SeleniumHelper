@@ -36,28 +36,28 @@ namespace ExtraAutomation.TestCases
             js.ExecuteScript("window.scrollBy(0,950);");
 
             BaseMethods.WaitTillElementDisplayed(WebDriver, addProductHomePage, ElementLocator.Xpath);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, addProductHomePage);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, addProductHomePage);
             js.ExecuteScript("window.scrollBy(0,-950);");
 
             BaseMethods.WaitTillElementDisplayed(WebDriver, basketButton, ElementLocator.Xpath);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, basketButton);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, basketButton);
            
-            BaseMethods.Wait(WebDriver, ElementLocator.Xpath, basketInButton);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, basketInButton);
+            BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, basketInButton);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, basketInButton);
             Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
-            BaseMethods.Wait(WebDriver, ElementLocator.Xpath, addProduct);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, addProduct);
+            BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, addProduct);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, addProduct);
             Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
-            BaseMethods.Wait(WebDriver, ElementLocator.Xpath, deductProduct);
-            BaseMethods.Click(WebDriver, ElementLocator.Xpath, deductProduct);
+            BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, deductProduct);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, deductProduct);
             Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
             Thread.Sleep(2000);
 
             int element = WebDriver.FindElements(findCountProduct).Count;
             for (int i = 0; i < element; i++)
             {
-                BaseMethods.Click(WebDriver, ElementLocator.Xpath, DeleteBasket);
-                Thread.Sleep(500);
+                BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, DeleteBasket);
+                BaseMethods.WaitSomeInterval(1);
             }
         }
     }

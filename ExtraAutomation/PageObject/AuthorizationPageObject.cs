@@ -11,56 +11,40 @@ namespace ExtraAutomation.PageObject
 {
     class AuthorizationPageObject : BaseClass
     {
-        private IWebDriver _webdriver;
-
-        public static string MyEmail = "595300019";
-        public static string MyPassword = "Extra2020";
+       
+        public string MyEmail = "595300019";
+        public string MyPassword = "Extra2020";
         public static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         public static string PasswordInput = "//input[@placeholder='პაროლი']";
         public static string LogginButton = "//app-sign-in-page//button[text()=' შესვლა ']";
         private static string checkedlocator = "//span[contains(text(),'ტესტ ')]";
 
 
-        public AuthorizationPageObject(IWebDriver webDriver)
-        {
-            _webdriver = webDriver;
-        }
-
         public HomePageObject Login()
         {
-            //BaseMethods.Wait(WebDriver, ElementLocator.Xpath, LoginInputButton);
-            //BaseMethods.Wait(WebDriver, ElementLocator.Xpath, PasswordInput);
-            //BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, LoginInputButton, MyEmail);
-            //BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PasswordInput, MyPassword);
-            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, LogginButton);
-            //Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
             try
             {
-               if (BaseMethods.Wait(WebDriver, ElementLocator.Xpath, LoginInputButton, 12) &&
-                    BaseMethods.Wait(WebDriver, ElementLocator.Xpath, PasswordInput, 12))
-                  {
-                    BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, LoginInputButton, MyEmail);
-                    BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PasswordInput, MyPassword);
-                    BaseMethods.Click(WebDriver, ElementLocator.Xpath, LogginButton);
-                    Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
-                    return new HomePageObject(_webdriver);
-                }
-                else
-                {
-                    Console.WriteLine("Login Test Failed.");
-                    Console.WriteLine("UsernameField, PasswordField or LoginBtn not found.");
-                }
-                Console.WriteLine("Login test Sucsess");
+                BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, LoginInputButton);
+                BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, LoginInputButton, MyEmail);
+                BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PasswordInput, MyPassword);
+                BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, LogginButton);
+                Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
+                return new HomePageObject(WebDriver);
+
             }
             catch (ElementNotVisibleException e)
             {
                 Console.WriteLine("Test failded", e.Message);
             }
-            return new HomePageObject(_webdriver);
+            return new HomePageObject(WebDriver);
         }
 
-            
+        
+        public AuthorizationPageObject(IWebDriver webDriver)
+        {
+            WebDriver = webDriver;
         }
-
     }
+
+}
 

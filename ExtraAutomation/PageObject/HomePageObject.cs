@@ -9,21 +9,17 @@ namespace ExtraAutomation.PageObject
 {
     class HomePageObject : BaseClass
     {
-        private IWebDriver _webdriver;
 
         public static string SignInButton = "//span[text()='შესვლა']";
         public HomePageObject(IWebDriver webDriver)
         {
-            _webdriver = webDriver;
+            WebDriver = webDriver;
         }
 
         public AuthorizationPageObject SignIn()
         {
-            if (BaseMethods.WaitToBeClickable(_webdriver, ElementLocator.Xpath, SignInButton, 12))
-            {
-                BaseMethods.Click(_webdriver, ElementLocator.Xpath, SignInButton);
-            }
-            return new AuthorizationPageObject(_webdriver);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, SignInButton);
+            return new AuthorizationPageObject(WebDriver);
         }
     }
 }

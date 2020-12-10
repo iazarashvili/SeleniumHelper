@@ -14,11 +14,9 @@ namespace ExtraAutomation.TestCases
         [Test, Category("Login test")]
         public void TestLogin()
         {
-            var login = new HomePageObject(WebDriver)
-                .SignIn()
-                .Login();
-              
-                
+            var authorization = new HomePageObject(WebDriver)
+                  .SignIn()
+                  .Login();
         }
     }
 }
