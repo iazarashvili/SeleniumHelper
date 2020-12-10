@@ -1,9 +1,9 @@
-﻿using ExtraAutomationTesting;
+﻿using ExtraAutomation.PageObject;
+using ExtraAutomationTesting;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumHelper.Base;
 using SeleniumHelper.ComponentHelper;
-using SingularQATestService;
 using System.Threading;
 
 namespace ExtraAutomation.TestCases
@@ -29,8 +29,9 @@ namespace ExtraAutomation.TestCases
         [Test, Category("Basket Test")]
         public  void BasketCheckTest()
         {
-            var login = new Login(WebDriver);
-            login.TestLogin();
+            var login = new HomePageObject(WebDriver)
+                .SignIn()
+                .Login();
             IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
             js.ExecuteScript("window.scrollBy(0,950);");
 

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumHelper.Base;
-using SingularQATestService;
 using System.Threading;
 
 namespace ExtraAutomation
@@ -23,9 +22,6 @@ namespace ExtraAutomation
             BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
         }
 
-        public static void ClosePopup(IWebDriver webDriver)
-        {
-            BaseMethods.Click(webDriver, ElementLocator.Xpath, PaymentsLocators.Popup);
-        }
+      
     }
 }

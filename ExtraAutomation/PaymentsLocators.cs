@@ -8,7 +8,6 @@ namespace ExtraAutomation
     public class PaymentsLocators
     {
         //chasadebia Wait metodebshi
-        public static string Popup = "//*[@id='PopupSignupForm_0']/div[2]/div[1]";
         
         public static string SearchKeywordInputField = "//div[@id='header']//div//div//div//div//input";
         public static string SearchButton = "//div[@class='rounded-lg search-wrap w-100 h-60px w-100" +

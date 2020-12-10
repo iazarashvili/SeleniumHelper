@@ -11,8 +11,8 @@ namespace ExtraAutomation.TestCases
        [Test,Category("Paymant Test Ipay")]
         public void PaymantTestIpay()
         {
-            var login = new Login(WebDriver);
-            login.TestLogin();
+            //var login = new Login(WebDriver);
+            //login.TestLogin();
             //BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchKeywordInputField, "80509");
             //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
 

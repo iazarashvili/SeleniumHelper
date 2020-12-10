@@ -40,7 +40,7 @@ namespace ExtraAutomationTesting
 
         protected void DobeforeEach()
         {
-            WebDriver.Navigate().GoToUrl(Login.HostUrl);
+            WebDriver.Navigate().GoToUrl("https://extra.ge/");
             WebDriver.Manage().Window.Maximize();
             
         }

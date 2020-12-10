@@ -4,12 +4,12 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumHelper.Base;
 
-namespace SingularQATestService
+namespace SeleniumHelper.Base
 {
     public class BaseMethods
     {
         private static IWebElement webElement;
-        public static void Click(IWebDriver drv, ElementLocator selector, string element)
+        public static  void Click(IWebDriver drv, ElementLocator selector, string element)
         {
             var action = new Actions(drv);
             try
@@ -81,7 +81,7 @@ namespace SingularQATestService
             }
         }
 
-        public static IWebElement WaitElement(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
+        public static  IWebElement WaitElement(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
         {
             var wait = new WebDriverWait(drv, TimeSpan.FromSeconds(seconds));
               webElement =  wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(element)));

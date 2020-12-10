@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Linq;
 using OpenQA.Selenium;
 using SeleniumHelper.Base;
-using SingularQATestService;
 
 
 namespace SeleniumHelper.ComponentHelper
