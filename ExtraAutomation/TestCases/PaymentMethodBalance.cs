@@ -3,6 +3,7 @@ using NUnit.Framework;
 using SeleniumHelper.ComponentHelper;
 using System.Threading;
 using System;
+using ExtraAutomation.PageObject;
 
 namespace ExtraAutomation.TestCases
 {
@@ -13,19 +14,10 @@ namespace ExtraAutomation.TestCases
         [Test, Category("Paymant Test Balance")]
         public void PaymantTestBalance()
         {
-            //var login = new Login(WebDriver);
-            //login.TestLogin();
-            //BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchKeywordInputField, "80509");
-            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.SearchButton);
+            var signIn = new HomePageObject(WebDriver)
+                .SignIn()
+                .Login();
 
-            //Thread.Sleep(700);
-            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.addProductButton);
-
-            //Thread.Sleep(500);
-            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.getBasket);
-
-            //BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
-            //BaseMethods.Click(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
             PaymentTestHelpMethods.GetCheckoutPage(WebDriver);
 
            Assert.True(CheckMethods.CheckPaymentMethod(PaymentsLocators.orderTotalAmount, PaymentsLocators.costOfTheItem, PaymentsLocators.deliveryCost, WebDriver));
