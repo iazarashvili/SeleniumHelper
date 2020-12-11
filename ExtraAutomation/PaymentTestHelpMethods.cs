@@ -18,7 +18,6 @@ namespace ExtraAutomation
             Thread.Sleep(500);
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, PaymentsLocators.getBasket);
 
-            BaseMethods.WaitToBeClickable(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, PaymentsLocators.shopButton);
         }
 

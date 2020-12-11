@@ -13,7 +13,7 @@ namespace SeleniumHelper.ComponentHelper
         {
             try
             {
-                BaseMethods.WaitTillElementDisplayed(driver, locator, ElementLocator.Xpath);
+                BaseMethods.WaitDispleed(driver, ElementLocator.Xpath, locator);
                 return true;
             }
             catch (NotFoundException ex)
@@ -24,8 +24,8 @@ namespace SeleniumHelper.ComponentHelper
         }
         public static bool CheckCount(string first, string last , IWebDriver WebDriver)
         {
-            IWebElement cartCount = BaseMethods.WaitElement(WebDriver, ElementLocator.Xpath, first);
-            IWebElement orderCount = BaseMethods.WaitElement(WebDriver, ElementLocator.Xpath, last);
+            IWebElement cartCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, first);
+            IWebElement orderCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, last);
             int cartNumber = int.Parse(cartCount.Text);
             int orderNumber = int.Parse(orderCount.Text);
             if (cartNumber == orderNumber)
@@ -37,13 +37,13 @@ namespace SeleniumHelper.ComponentHelper
 
         public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem ,string deliveryCost, IWebDriver webdriver)
         {
-            IWebElement orderPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, orderTotalAmount);
+            IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
 
-            IWebElement itemPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Xpath, costOfTheItem);
+            IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
 
-            IWebElement deliveryPrice = BaseMethods.WaitElement(webdriver, ElementLocator.Name, deliveryCost);
+            IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Name, deliveryCost);
 
             string first = deliveryPrice.Text;
             string[] word = first.Split('₾');

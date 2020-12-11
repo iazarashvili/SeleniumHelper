@@ -11,7 +11,7 @@ namespace SeleniumHelper.Base
     public static class BaseMethods
     {
         private static IWebElement webElement;
-        
+
         public static void ShouldLocate(IWebDriver webDriver, string location)
         {
             try
@@ -25,17 +25,33 @@ namespace SeleniumHelper.Base
             }
         }
 
+
         public static void WaitSomeInterval(int seconds = 10)
         {
             Task.Delay(TimeSpan.FromSeconds(seconds)).Wait();
         }
 
-        public static IWebElement WaitElement(IWebDriver webDriver, ElementLocator selector, string element, int seconds = 15)
+        public static IWebElement WaitElementIsVisibleReturn(IWebDriver webDriver, ElementLocator selector, string element, int seconds = 15)
         {
             try
             {
-                
-                webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(By.XPath(element)));
+                switch (selector)
+                {
+                    case ElementLocator.Id:
+                        webElement =  new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.Id(element)));
+                        break;
+                    case ElementLocator.Class:
+                       webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element)));
+                        break;
+                    case ElementLocator.Xpath:
+                       webElement =  new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.XPath(element)));
+                        break;
+                    case ElementLocator.Name:
+                        webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.Name(element)));
+                        break;
+                    default:
+                        break;
+                }
                 return webElement;
             }
             catch (Exception ex)
@@ -43,7 +59,7 @@ namespace SeleniumHelper.Base
 
                 throw new Exception("Failed Element not Visible.", ex);
             }
-         
+
         }
 
         public static void WaitDispleed(IWebDriver webDriver, ElementLocator selector, string element, int seconds = 15)
@@ -56,7 +72,7 @@ namespace SeleniumHelper.Base
             {
                 throw new Exception("Element not Displeed", ex);
             }
-           
+
         }
 
         public static void ClickElement(IWebDriver webDriver, ElementLocator selector, string element, int seconds = 15)
@@ -84,6 +100,31 @@ namespace SeleniumHelper.Base
             catch { throw new Exception("Failed Element not Visible."); }
         }
 
+        //--------------------------------------------------------------
+        public static void WaitElementIsVisible(IWebDriver webDriver, ElementLocator selector, string element, int seconds = 15)
+        {
+            try
+            {
+                switch (selector)
+                {
+                    case ElementLocator.Id:
+                        new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(By.Id(element)));
+                        break;
+                    case ElementLocator.Class:
+                        new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(By.ClassName(element)));
+                        break;
+                    case ElementLocator.Xpath:
+                        new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(By.XPath(element)));
+                        break;
+                    case ElementLocator.Name:
+                        new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementIsVisible(By.Name(element)));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch { throw new Exception("Failed Element not Visible."); }
+        }
         // -------- - - - - - - - -- -  --  -  - - - - - - - - - -
 
         public static void SendKeys(IWebDriver drv, ElementLocator selector, string element, string text)
@@ -109,44 +150,6 @@ namespace SeleniumHelper.Base
                 }
             }
             catch { throw new Exception("Failed to send keys."); }
-        }
-
-        // - - ------ - - - - - - - - ----------------------------------------------------------
-        public static bool WaitToBeClickable(IWebDriver drv, ElementLocator selector, string element, int seconds = 15)
-        {
-            var wait = new WebDriverWait(drv, TimeSpan.FromSeconds(seconds));
-            try
-            {
-                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(element)));
-                return true;
-            }
-            catch (ElementNotVisibleException ex)
-            {
-                Console.WriteLine($"Element {element} wasn't found. Exception Message: {ex.Message}");
-                return false;
-            }
-        }
-        public static IWebElement WaitTillElementDisplayed(IWebDriver driver, string locator,  ElementLocator elementLocatorType = ElementLocator.Xpath, int TimeOutForFindingElement = 15)
-        {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(TimeOutForFindingElement));
-
-            if (elementLocatorType == ElementLocator.Xpath)
-            {
-                webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
-            }
-            else if (elementLocatorType == ElementLocator.Class)
-            {
-                webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.PartialLinkText(locator)));
-            }
-            else if (elementLocatorType == ElementLocator.Name)
-            {
-                webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locator)));
-            }
-            else if (elementLocatorType == ElementLocator.Id)
-            {
-                webElement = wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(locator)));
-            }
-            return webElement;
         }
     }
 }
