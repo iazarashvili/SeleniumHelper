@@ -44,6 +44,7 @@ namespace SeleniumHelper.ComponentHelper
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
 
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Name, deliveryCost);
+            
 
             string first = deliveryPrice.Text;
             string[] word = first.Split('₾');

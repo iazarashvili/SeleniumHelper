@@ -22,7 +22,6 @@ namespace ExtraAutomation.TestCases
 
            Assert.True(CheckMethods.CheckPaymentMethod(PaymentsLocators.orderTotalAmount,
                PaymentsLocators.costOfTheItem, PaymentsLocators.deliveryCost, WebDriver));
-            Thread.Sleep(500);
         }
     }
 }
