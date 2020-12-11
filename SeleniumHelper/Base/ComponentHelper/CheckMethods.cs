@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumHelper.Base;
 
@@ -35,7 +36,7 @@ namespace SeleniumHelper.ComponentHelper
             return false;
         }
 
-        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem ,string deliveryCost, IWebDriver webdriver)
+        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
         {
             IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
@@ -44,11 +45,17 @@ namespace SeleniumHelper.ComponentHelper
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
 
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Name, deliveryCost);
-            
+          
+            //Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text);
+
 
             string first = deliveryPrice.Text;
             string[] word = first.Split('₾');
-            int delivery = int.Parse(word[0], NumberStyles.Any);
+            if (Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text))
+            {
+                return true;
+            }
+            decimal delivery = int.Parse(word[0], NumberStyles.Any);
 
             if ((delivery == 0) && (priceOrder == priceItem))
             {

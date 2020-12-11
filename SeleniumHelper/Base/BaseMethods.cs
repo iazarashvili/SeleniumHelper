@@ -25,6 +25,11 @@ namespace SeleniumHelper.Base
             }
         }
 
+        public static IWebElement findElement(IWebDriver webDriver, ElementLocator selector, string element)
+        {
+            IWebElement webElement = webDriver.FindElement(By.XPath(element));
+            return webElement;
+        }
 
         public static void WaitSomeInterval(int seconds = 10)
         {
