@@ -45,16 +45,18 @@ namespace SeleniumHelper.ComponentHelper
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
 
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Name, deliveryCost);
-          
+
             //Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text);
 
+            if ("უფასო" == deliveryPrice.Text) 
+            {
+
+            }
 
             string first = deliveryPrice.Text;
             string[] word = first.Split('₾');
-            if (Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text))
-            {
-                return true;
-            }
+            Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text);
+           
             decimal delivery = int.Parse(word[0], NumberStyles.Any);
 
             if ((delivery == 0) && (priceOrder == priceItem))
