@@ -44,24 +44,24 @@ namespace SeleniumHelper.ComponentHelper
             IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
 
-            IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Name, deliveryCost);
-          
-            //Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text);
+            IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, deliveryCost);
+            //IWebElement deliveryPrice = BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost);
+           //Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text);
 
 
-            string first = deliveryPrice.Text;
+           string first = deliveryPrice.Text;
             string[] word = first.Split('₾');
-            if (Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text))
-            {
-                return true;
-            }
             decimal delivery = int.Parse(word[0], NumberStyles.Any);
 
             if ((delivery == 0) && (priceOrder == priceItem))
             {
                 return true;
+            } 
+            else if ((delivery == 5) && (priceOrder < priceItem))
+            {
+                return true;
             }
-            if((delivery == 5) && (priceOrder < priceItem ))
+            else if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
             {
                 return true;
             }
