@@ -51,16 +51,20 @@ namespace SeleniumHelper.ComponentHelper
 
             if ((delivery == 0) && (priceOrder == priceItem))
             {
+                Console.WriteLine("The total amount and price of the product are used correctly");
                 return true;
             } 
             else if ((delivery == 5) && (priceOrder < priceItem))
             {
+                Console.WriteLine("The total amount and price of the product are used correctly");
                 return true;
             }
             else if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
             {
+                Console.WriteLine("The total amount and price of the product are used correctly");
                 return true;
             }
+            Console.WriteLine("The total amount and price of the product are used correctly");
             return false;
         }   
         public static void CheckedAndUncheckedBoxes(IWebDriver webDriver, string paymentMethod)

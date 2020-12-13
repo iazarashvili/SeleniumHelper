@@ -29,7 +29,7 @@ namespace ExtraAutomation.PageObject
         public static string PaymentByCardButton = "//span[text()='ბარათით გადახდა']";
         // -      ---------------------------------------------------------------------
 
-        public static void AddProductAndGoToTheCheckoutPage(IWebDriver WebDriver)
+        public static CheckOutPageObject AddProductAndGoToTheCheckoutPage(IWebDriver WebDriver)
         {
             BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, SearchKeywordInputField, "150764");
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, SearchButton);
@@ -41,6 +41,7 @@ namespace ExtraAutomation.PageObject
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, getBasket);
 
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, shopButton);
+            return new CheckOutPageObject(WebDriver);
         }
 
         public CheckOutPageObject(IWebDriver webDriver)
