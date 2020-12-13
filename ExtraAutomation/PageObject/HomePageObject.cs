@@ -15,6 +15,7 @@ namespace ExtraAutomation.PageObject
 
         public AuthorizationPageObject SignIn()
         {
+            BaseMethods.WaitSomeInterval(2);
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, SignInButton);
             return new AuthorizationPageObject(WebDriver);
         }
