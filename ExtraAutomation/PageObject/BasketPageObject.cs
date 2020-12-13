@@ -8,18 +8,18 @@ namespace ExtraAutomation.PageObject
 {
     class BasketPageObject : BaseClass
     {
-        public string first = "//span[contains(@class,'position-absolute absolute--right-top-position absolute--transform-50 text-orange ')]";
-        public string last = "//var[@class='text-normal font-medium font-size-14 text-gray'][1]";
-        public By findCountProduct = By.XPath("//div[@class='mr-md-30px flex-grow-1']//div//div//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']//a[1]");
+        private string first = "//span[contains(@class,'position-absolute absolute--right-top-position absolute--transform-50 text-orange ')]";
+        private string last = "//var[@class='text-normal font-medium font-size-14 text-gray'][1]";
+        private By findCountProduct = By.XPath("//div[@class='mr-md-30px flex-grow-1']//div//div//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']//a[1]");
 
 
-        public string DeleteBasket = "//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']/child::a";
-        public string addProductHomePage = "//div[contains(@class,'slider-container')][1]//app-product-item[2]//button[contains(text(),' კალათაში დამატება ')]";
-        public string basketButton = "//span[text()='კალათა']";
-        public string basketInButton = "//app-basket//button[contains(text(),'კალათა')]";
+        private string DeleteBasket = "//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']/child::a";
+        private string addProductHomePage = "//div[contains(@class,'slider-container')][1]//app-product-item[2]//button[contains(text(),' კალათაში დამატება ')]";
+        private string basketButton = "//span[text()='კალათა']";
+        private string basketInButton = "//app-basket//button[contains(text(),'კალათა')]";
 
-        public string addProduct = "//i[@class='plus icon-disabled cursor-pointer px-5px']";
-        public string deductProduct = "//i[@class='minus icon-disabled cursor-pointer px-5px']";
+        private string addProduct = "//i[@class='plus icon-disabled cursor-pointer px-5px']";
+        private string deductProduct = "//i[@class='minus icon-disabled cursor-pointer px-5px']";
 
 
         public BasketPageObject checkBaskets()

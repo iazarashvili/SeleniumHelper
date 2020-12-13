@@ -15,7 +15,7 @@ namespace ExtraAutomation.TestCases
             var signIn = new HomePageObject(WebDriver)
                  .SignIn()
                  .Login();
-            PaymentTestHelpMethods.GetCheckoutPage(WebDriver);
+            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver);
         }
     }
 }

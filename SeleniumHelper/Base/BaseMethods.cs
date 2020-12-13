@@ -156,5 +156,31 @@ namespace SeleniumHelper.Base
             }
             catch { throw new Exception("Failed to send keys."); }
         }
+
+        public static IWebElement IwebelementReturn(IWebDriver drv, ElementLocator selector, string element)
+        {            
+            try
+            {
+                switch (selector)
+                {
+                    case ElementLocator.Id:
+                      webElement = drv.FindElement(By.Id(element));
+                        break;
+                    case ElementLocator.Class:
+                        webElement = drv.FindElement(By.ClassName(element));
+                        break;
+                    case ElementLocator.Xpath:
+                        webElement = drv.FindElement(By.XPath(element));
+                        break;
+                    case ElementLocator.Name:
+                        webElement = drv.FindElement(By.Name(element));
+                        break;
+                    default:
+                        break;
+                }
+                return webElement;
+            }
+            catch { throw new Exception("Failed to send keys."); }
+        }
     }
 }
