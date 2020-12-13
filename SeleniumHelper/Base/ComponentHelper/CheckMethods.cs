@@ -19,11 +19,11 @@ namespace SeleniumHelper.ComponentHelper
             }
             catch (NotFoundException ex)
             {
-                Console.WriteLine("Username not found" , ex);
+                Console.WriteLine("Username not found", ex);
                 return false;
             }
         }
-        public static bool CheckCount(string first, string last , IWebDriver WebDriver)
+        public static bool CheckCount(string first, string last, IWebDriver WebDriver)
         {
             IWebElement cartCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, first);
             IWebElement orderCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, last);
@@ -36,16 +36,16 @@ namespace SeleniumHelper.ComponentHelper
             return false;
         }
 
-         public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
+        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
         {
             IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
             IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, deliveryCost);
-       
 
-           string first = deliveryPrice.Text;
+
+            string first = deliveryPrice.Text;
             string[] word = first.Split('₾');
             decimal delivery = int.Parse(word[0], NumberStyles.Any);
 
@@ -53,7 +53,7 @@ namespace SeleniumHelper.ComponentHelper
             {
                 Console.WriteLine("The total amount and price of the product are used correctly");
                 return true;
-            } 
+            }
             else if ((delivery == 5) && (priceOrder < priceItem))
             {
                 Console.WriteLine("The total amount and price of the product are used correctly");
@@ -66,11 +66,7 @@ namespace SeleniumHelper.ComponentHelper
             }
             Console.WriteLine("The total amount and price of the product are used correctly");
             return false;
-        }   
-        }   
-        public static void CheckedAndUncheckedBoxes(IWebDriver webDriver, string paymentMethod)
-        {
-            
         }
     }
+
 }

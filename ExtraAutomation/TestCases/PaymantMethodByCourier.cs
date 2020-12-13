@@ -2,14 +2,16 @@
 using ExtraAutomationTesting;
 using NUnit.Framework;
 using SeleniumHelper.ComponentHelper;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ExtraAutomation.TestCases
 {
-    [TestFixture]
-    class PaymantMethodIPay : BaseClass
-    {  
-        [Test,Category("Paymant Test Ipay")]
-        public void PaymantTestIpay()
+    class PaymantMethodByCourier : BaseClass
+    {
+        [Test, Category("Paymant Test By Courier")]
+        public void PaymantTestCash()
         {
             var signIn = new HomePageObject(WebDriver)
                  .SignIn()
