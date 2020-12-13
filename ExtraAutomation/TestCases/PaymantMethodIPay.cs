@@ -2,6 +2,8 @@
 using ExtraAutomationTesting;
 using NUnit.Framework;
 using SeleniumHelper.ComponentHelper;
+using
+using SeleniumHelper.Base;
 
 namespace ExtraAutomation.TestCases
 {
@@ -14,7 +16,7 @@ namespace ExtraAutomation.TestCases
             var signIn = new HomePageObject(WebDriver)
                  .SignIn()
                  .Login();
-            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver);
+            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, CheckOutPageObject.PaymentByCardIpay);
             Assert.True(CheckMethods.CheckPaymentMethod(CheckOutPageObject.orderTotalAmount,
                CheckOutPageObject.costOfTheItem, CheckOutPageObject.deliveryCost, WebDriver));
         }

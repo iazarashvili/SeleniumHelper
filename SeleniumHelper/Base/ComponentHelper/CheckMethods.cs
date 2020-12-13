@@ -44,28 +44,33 @@ namespace SeleniumHelper.ComponentHelper
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, deliveryCost);
 
+             if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
+            {
+                Console.WriteLine("The total amount and price of the product are used correctly");
+                return true;
+            }
+            else
+            {
+                string first = deliveryPrice.Text;
+                string[] word = first.Split('₾');
+                decimal delivery = int.Parse(word[0], NumberStyles.Any);
 
-            string first = deliveryPrice.Text;
-            string[] word = first.Split('₾');
-            decimal delivery = int.Parse(word[0], NumberStyles.Any);
+                if ((delivery == 0) && (priceOrder == priceItem))
+                {
+                    Console.WriteLine("The total amount and price of the product are used correctly");
+                    return true;
+                }
+                else if ((delivery == 5) && (priceOrder < priceItem))
+                {
+                    Console.WriteLine("The total amount and price of the product are used correctly");
+                    return true;
+                }
 
-            if ((delivery == 0) && (priceOrder == priceItem))
-            {
                 Console.WriteLine("The total amount and price of the product are used correctly");
-                return true;
+                return false;
+
             }
-            else if ((delivery == 5) && (priceOrder < priceItem))
-            {
-                Console.WriteLine("The total amount and price of the product are used correctly");
-                return true;
-            }
-            else if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
-            {
-                Console.WriteLine("The total amount and price of the product are used correctly");
-                return true;
-            }
-            Console.WriteLine("The total amount and price of the product are used correctly");
-            return false;
+           
         }
     }
 

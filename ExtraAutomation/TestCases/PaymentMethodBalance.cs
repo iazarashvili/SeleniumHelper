@@ -1,6 +1,7 @@
 ﻿using ExtraAutomation.PageObject;
 using ExtraAutomationTesting;
 using NUnit.Framework;
+using SeleniumHelper.Base;
 using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
@@ -16,7 +17,7 @@ namespace ExtraAutomation.TestCases
                 .SignIn()
                 .Login();
 
-            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver);
+            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, CheckOutPageObject.PaymentByBalance);
            Assert.True(CheckMethods.CheckPaymentMethod(CheckOutPageObject.orderTotalAmount,
                CheckOutPageObject.costOfTheItem, CheckOutPageObject.deliveryCost, WebDriver));
         }
