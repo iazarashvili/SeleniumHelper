@@ -40,14 +40,10 @@ namespace SeleniumHelper.ComponentHelper
         {
             IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
-
             IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
-
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, deliveryCost);
-            //IWebElement deliveryPrice = BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost);
-           //Assert.AreEqual("უფასო", BaseMethods.findElement(webdriver, ElementLocator.Xpath, deliveryCost).Text);
-
+       
 
            string first = deliveryPrice.Text;
             string[] word = first.Split('₾');
