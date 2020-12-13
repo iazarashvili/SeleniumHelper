@@ -80,7 +80,7 @@ namespace SeleniumHelper.Base
 
         }
 
-        public static void ClickElement(IWebDriver webDriver, ElementLocator selector, string element, int seconds = 15)
+        public static void ClickElement(IWebDriver webDriver, ElementLocator selector, string element, int seconds = 30)
         {
             try
             {

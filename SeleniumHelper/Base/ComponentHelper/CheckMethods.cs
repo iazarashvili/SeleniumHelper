@@ -36,7 +36,7 @@ namespace SeleniumHelper.ComponentHelper
             return false;
         }
 
-        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
+         public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
         {
             IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
@@ -66,6 +66,7 @@ namespace SeleniumHelper.ComponentHelper
             }
             Console.WriteLine("The total amount and price of the product are used correctly");
             return false;
+        }   
         }   
         public static void CheckedAndUncheckedBoxes(IWebDriver webDriver, string paymentMethod)
         {
