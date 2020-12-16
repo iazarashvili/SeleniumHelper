@@ -46,7 +46,7 @@ namespace SeleniumHelper.ComponentHelper
 
              if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
             {
-                Console.WriteLine("The total amount and price of the product are used correctly");
+                Console.WriteLine("The price of the products and the amount to be paid are correct");
                 return true;
             }
             else
@@ -57,16 +57,16 @@ namespace SeleniumHelper.ComponentHelper
 
                 if ((delivery == 0) && (priceOrder == priceItem))
                 {
-                    Console.WriteLine("The total amount and price of the product are used correctly");
+                    Console.WriteLine("The price of the products and the amount to be paid are correct");
                     return true;
                 }
                 else if ((delivery == 5) && (priceOrder < priceItem))
                 {
-                    Console.WriteLine("The total amount and price of the product are used correctly");
+                    Console.WriteLine("The price of the products and the amount to be paid are correct");
                     return true;
                 }
 
-                Console.WriteLine("The total amount and price of the product are used correctly");
+                Console.WriteLine("The price of the products and the amount to be paid are not correct");
                 return false;
 
             }
