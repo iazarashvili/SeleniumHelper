@@ -1,22 +1,23 @@
 ﻿using ExtraAutomation.PageObject;
 using ExtraAutomationTesting;
 using NUnit.Framework;
-using SeleniumHelper.ComponentHelper;
-using
 using SeleniumHelper.Base;
+using SeleniumHelper.ComponentHelper;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ExtraAutomation.TestCases
 {
-    [TestFixture]
-    class PaymantMethodIPay : BaseClass
-    {  
-        [Test,Category("Paymant Test Ipay")]
-        public void PaymantTestIpay()
+    class PaymantMethodByCourier : BaseClass
+    {
+        [Test, Category("Paymant Test By Courier")]
+        public void PaymantTestCash()
         {
             var signIn = new HomePageObject(WebDriver)
                  .SignIn()
                  .Login();
-            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, CheckOutPageObject.PaymentByCardIpay);
+            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, CheckOutPageObject.PaymentByCourier);
             Assert.True(CheckMethods.CheckPaymentMethod(CheckOutPageObject.orderTotalAmount,
                CheckOutPageObject.costOfTheItem, CheckOutPageObject.deliveryCost, WebDriver));
         }

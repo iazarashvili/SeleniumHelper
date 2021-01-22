@@ -19,11 +19,11 @@ namespace SeleniumHelper.ComponentHelper
             }
             catch (NotFoundException ex)
             {
-                Console.WriteLine("Username not found" , ex);
+                Console.WriteLine("Username not found", ex);
                 return false;
             }
         }
-        public static bool CheckCount(string first, string last , IWebDriver WebDriver)
+        public static bool CheckCount(string first, string last, IWebDriver WebDriver)
         {
             IWebElement cartCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, first);
             IWebElement orderCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, last);
@@ -36,37 +36,42 @@ namespace SeleniumHelper.ComponentHelper
             return false;
         }
 
-         public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
+        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
         {
             IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
             IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, deliveryCost);
-       
 
-           string first = deliveryPrice.Text;
-            string[] word = first.Split('₾');
-            decimal delivery = int.Parse(word[0], NumberStyles.Any);
-
-            if ((delivery == 0) && (priceOrder == priceItem))
+             if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
             {
-                return true;
-            } 
-            else if ((delivery == 5) && (priceOrder < priceItem))
-            {
+                Console.WriteLine("The price of the products and the amount to be paid are correct");
                 return true;
             }
-            else if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
+            else
             {
-                return true;
+                string first = deliveryPrice.Text;
+                string[] word = first.Split('₾');
+                decimal delivery = int.Parse(word[0], NumberStyles.Any);
+
+                if ((delivery == 0) && (priceOrder == priceItem))
+                {
+                    Console.WriteLine("The price of the products and the amount to be paid are correct");
+                    return true;
+                }
+                else if ((delivery == 5) && (priceOrder < priceItem))
+                {
+                    Console.WriteLine("The price of the products and the amount to be paid are correct");
+                    return true;
+                }
+
+                Console.WriteLine("The price of the products and the amount to be paid are not correct");
+                return false;
+
             }
-            return false;
-        }   
-        }   
-        public static void CheckedAndUncheckedBoxes(IWebDriver webDriver, string paymentMethod)
-        {
-            
+           
         }
     }
+
 }
