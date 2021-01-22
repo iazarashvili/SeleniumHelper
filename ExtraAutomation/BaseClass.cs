@@ -19,7 +19,7 @@ namespace ExtraAutomationTesting
         {
             var chromeOption = new ChromeOptions();
             chromeOption.PageLoadStrategy = PageLoadStrategy.Normal;
-            WebDriver = new ChromeDriver(@"G:\Extra\New Project Auto\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
+            WebDriver = new ChromeDriver(@"G:\Extra\NewProjectAuto\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
             WebDriver.Manage().Window.Maximize();
         }
 
