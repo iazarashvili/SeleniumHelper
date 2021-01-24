@@ -13,7 +13,7 @@ namespace ExtraAutomation.PageObject
     {
        
         private string MyEmail = "595300019";
-        private string MyPassword = "Extra2020";
+        private string MyPassword = "Extra2121";
         private static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         private static string PasswordInput = "//input[@placeholder='პაროლი']";
         private static string LogginButton = "//app-sign-in-page//button[text()=' შესვლა ']";

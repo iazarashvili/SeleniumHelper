@@ -21,8 +21,6 @@ namespace ExtraAutomation.TestCases
 
             var basketCheck = new BasketPageObject(WebDriver);
             basketCheck.checkBaskets();
-             
-
         }
     }
 }

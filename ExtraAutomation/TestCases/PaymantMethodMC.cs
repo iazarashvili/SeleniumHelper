@@ -20,6 +20,7 @@ namespace ExtraAutomation.TestCases
             CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, CheckOutPageObject.PaymentByMc);
             Assert.True(CheckMethods.CheckPaymentMethod(CheckOutPageObject.orderTotalAmount,
                CheckOutPageObject.costOfTheItem, CheckOutPageObject.deliveryCost, WebDriver));
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, CheckOutPageObject.OrderCompleteButton);
         }
     }
 }
