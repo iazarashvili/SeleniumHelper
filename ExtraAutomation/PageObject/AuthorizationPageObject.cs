@@ -13,7 +13,9 @@ namespace ExtraAutomation.PageObject
     {
        
         private string MyEmail = "595300019";
+
         private string MyPassword = "12345678";
+
         private static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         private static string PasswordInput = "//input[@placeholder='პაროლი']";
         private static string LogginButton = "//app-sign-in-page//button[text()=' შესვლა ']";

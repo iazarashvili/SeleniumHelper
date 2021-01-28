@@ -25,7 +25,7 @@ namespace ExtraAutomation.PageObject
         public static string costOfTheItem = "//span[@class='text-rebeccapurple font-bold font-size-sm-16 font-size-12 d-flex align-items-center']";
         public static string deliveryCost = "//span[text()='მიტანის ღირებულება:']/following-sibling::var";
 
-        // გადახდის მეთოდის მონიშვნა
+        // Payment Methods
         public static string PaymentByCardIpay = "//span[text()='ბარათით გადახდა']";
         public static string PaymentByCourier = "//*[text()='კურიერთან გადახდა']";
         public static string PaymentByBalance = "//*[text()='ბალანსით გადახდა']";
@@ -38,11 +38,9 @@ namespace ExtraAutomation.PageObject
         {
             BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, SearchKeywordInputField, "150764");
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, SearchButton);
-
-            Thread.Sleep(500);
+            
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, addProductButton);
-
-            Thread.Sleep(500);
+            
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, getBasket);
 
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, shopButton);
