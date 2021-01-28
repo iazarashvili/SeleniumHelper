@@ -19,8 +19,11 @@ namespace ExtraAutomationTesting
         {
             var chromeOption = new ChromeOptions();
             chromeOption.PageLoadStrategy = PageLoadStrategy.Normal;
-            WebDriver = new ChromeDriver(@"G:\Extra\NewProjectAuto\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
+            chromeOption.AddArguments("--disable-popup-blocking");
+            chromeOption.AddArguments("test-type");
+            WebDriver = new ChromeDriver(@"C:\Users\IliaAzarashvili\source\repos\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
             WebDriver.Manage().Window.Maximize();
+            
         }
 
 
