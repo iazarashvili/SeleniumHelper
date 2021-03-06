@@ -1,11 +1,8 @@
-using ExtraAutomation.TestCases;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.DevTools.Network;
 using SeleniumHelper.Base;
 using System;
-using System.Threading;
 
 namespace ExtraAutomationTesting
 {
@@ -21,9 +18,9 @@ namespace ExtraAutomationTesting
             chromeOption.PageLoadStrategy = PageLoadStrategy.Normal;
             chromeOption.AddArguments("--disable-popup-blocking");
             chromeOption.AddArguments("test-type");
-            WebDriver = new ChromeDriver(@"C:\Users\IliaAzarashvili\source\repos\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
+            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
             WebDriver.Manage().Window.Maximize();
-            
+
         }
 
 
@@ -45,7 +42,7 @@ namespace ExtraAutomationTesting
         {
             WebDriver.Navigate().GoToUrl("https://extra.ge/");
             BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
-            
+
         }
 
     }
