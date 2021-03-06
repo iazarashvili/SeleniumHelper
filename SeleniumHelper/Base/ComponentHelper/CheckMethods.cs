@@ -1,9 +1,7 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumHelper.Base;
+using System;
+using System.Globalization;
 
 
 namespace SeleniumHelper.ComponentHelper
@@ -40,11 +38,13 @@ namespace SeleniumHelper.ComponentHelper
         {
             IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
+
             IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
+
             IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, deliveryCost);
 
-             if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
+            if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
             {
                 Console.WriteLine("The price of the products and the amount to be paid are correct");
                 return true;
@@ -65,12 +65,10 @@ namespace SeleniumHelper.ComponentHelper
                     Console.WriteLine("The price of the products and the amount to be paid are correct");
                     return true;
                 }
-
                 Console.WriteLine("The price of the products and the amount to be paid are not correct");
                 return false;
-
             }
-           
+
         }
     }
 
