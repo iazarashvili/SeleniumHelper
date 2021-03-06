@@ -1,16 +1,15 @@
 ﻿using ExtraAutomation.PageObject;
 using ExtraAutomationTesting;
 using NUnit.Framework;
-using SeleniumHelper.ComponentHelper;
-
 using SeleniumHelper.Base;
+using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
 {
     [TestFixture]
     class PaymantMethodIPay : BaseClass
-    {  
-        [Test,Category("Paymant Test Ipay")]
+    {
+        [Test, Category("Paymant Test Ipay")]
         public void PaymantTestIpay()
         {
             var signIn = new HomePageObject(WebDriver)
@@ -20,6 +19,7 @@ namespace ExtraAutomation.TestCases
             Assert.True(CheckMethods.CheckPaymentMethod(CheckOutPageObject.orderTotalAmount,
                CheckOutPageObject.costOfTheItem, CheckOutPageObject.deliveryCost, WebDriver));
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, CheckOutPageObject.OrderCompleteButton);
+
         }
     }
 }
