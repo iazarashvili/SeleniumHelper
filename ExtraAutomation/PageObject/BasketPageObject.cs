@@ -1,6 +1,7 @@
 ﻿using ExtraAutomationTesting;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using QAssistant.Extensions;
 using SeleniumHelper.Base;
 using SeleniumHelper.ComponentHelper;
 
@@ -8,7 +9,7 @@ namespace ExtraAutomation.PageObject
 {
     class BasketPageObject : BaseClass
     {
-        private string first = "//span[contains(@class,'position-absolute absolute--right-top-position absolute--transform-50 text-orange ')]";
+        private string first = "//span[@class='_s_position-absolute _s_position-minus-r-px--1 _s_position-t-px--0 _s_label _s_label-sm _s_color-orange _s_label-bold']";
         private string last = "//var[@class='text-normal font-medium font-size-14 text-gray'][1]";
         private By findCountProduct = By.XPath("//div[@class='mr-md-30px flex-grow-1']//div//div//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']//a[1]");
 
@@ -25,30 +26,27 @@ namespace ExtraAutomation.PageObject
         public BasketPageObject checkBaskets()
         {
             IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
-            js.ExecuteScript("window.scrollBy(0,950);");
-
+            js.ExecuteScript("window.scrollBy(0,1050);");
             BaseMethods.WaitSomeInterval(3);
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, addProductHomePage);
-            js.ExecuteScript("window.scrollBy(0,-950);");
+            WebDriver.WaitUntilFindElement(By.XPath(addProductHomePage)).Click();
+            js.ExecuteScript("window.scrollBy(0,-1050);");
 
-           
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, basketButton);
+            WebDriver.Click(By.XPath(basketButton));
 
-            BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, basketInButton);
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, basketInButton);
+            WebDriver.WaitUntilFindElement(By.XPath(basketInButton)).Click();
             Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
-            BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, addProduct);
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, addProduct);
+
+            WebDriver.WaitUntilFindElement(By.XPath(addProduct)).Click();
             Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
-            BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, deductProduct);
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, deductProduct);
+
+            WebDriver.WaitUntilFindElement(By.XPath(deductProduct)).Click();
             Assert.IsTrue(CheckMethods.CheckCount(first, last, WebDriver));
             BaseMethods.WaitSomeInterval(1);
 
             int element = WebDriver.FindElements(findCountProduct).Count;
             for (int i = 0; i < element; i++)
             {
-                BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, DeleteBasket);
+                WebDriver.Click(By.XPath(DeleteBasket));
                 BaseMethods.WaitSomeInterval(1);
             }
             return new BasketPageObject(WebDriver);

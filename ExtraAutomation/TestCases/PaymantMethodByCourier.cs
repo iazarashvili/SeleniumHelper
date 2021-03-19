@@ -3,9 +3,6 @@ using ExtraAutomationTesting;
 using NUnit.Framework;
 using SeleniumHelper.Base;
 using SeleniumHelper.ComponentHelper;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExtraAutomation.TestCases
 {
