@@ -19,6 +19,6 @@ namespace ExtraAutomation.PageObject
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, SignInButton);
             return new AuthorizationPageObject(WebDriver);
         }
-       
+
     }
 }
