@@ -18,7 +18,7 @@ namespace ExtraAutomationTesting
             chromeOption.PageLoadStrategy = PageLoadStrategy.Normal;
             chromeOption.AddArguments("--disable-popup-blocking");
             chromeOption.AddArguments("test-type");
-            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
+            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
             WebDriver.Manage().Window.Maximize();
 
         }
@@ -34,10 +34,10 @@ namespace ExtraAutomationTesting
         protected void DoAfterEach()
         {
             WebDriver.Close();
-            WebDriver.Quit();
+            WebDriver.Dispose();
         }
-        [SetUp]
 
+        [SetUp]
         protected void DobeforeEach()
         {
             WebDriver.Navigate().GoToUrl("https://extra.ge/");
