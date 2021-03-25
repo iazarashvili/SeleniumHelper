@@ -1,51 +1,42 @@
 ﻿using ExtraAutomationTesting;
-using NUnit.Framework;
 using OpenQA.Selenium;
-using SeleniumHelper.Base;
-using SeleniumHelper.ComponentHelper;
-using System;
+using QAssistant.Extensions;
+
 
 namespace ExtraAutomation.PageObject
 {
-    class AuthorizationPageObject : BaseClass
+    public class AuthorizationPageObject : BaseClass
     {
 
-        private string EnterUserName = "tapey73486@yutongdt.com";
+        public static readonly string LoginInputField = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
+        public static readonly string PasswordInputField = "//input[@placeholder='პაროლი']";
+        public static readonly string LogginButton = "//span[text()=' შესვლა']";
+        public static readonly string checkedlocator = "//span[contains(text(),' ტესტ')]";
 
-        private string EnterPassword = "Extra2020";
+        //public static readonly string enterUserName = "walih51209@wedbo.net";
+        //public static readonly string enterPassword = "Extra2222";
+        public static readonly string enterPassword = "Extra2020";
+        public static readonly string enterUserName = "tapey73486@yutongdt.com";
 
-        private static string LoginInputButton = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
-        private static string PasswordInput = "//input[@placeholder='პაროლი']";
-        private static string LogginButton = "//span[text()=' შესვლა']";
-        private static string checkedlocator = "//span[contains(text(),' ilia')]";
+        public static readonly string ValidLoginEnterWrongPass = "//span[@class='_s_color-red _s_label _s_label-xs']";
 
-
-        public HomePageObject Login()
+        public static void EnterUserName(string username)
         {
-            try
-            {
-                Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
-                BaseMethods.WaitDispleed(WebDriver, ElementLocator.Xpath, LoginInputButton);
-                BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, LoginInputButton, EnterUserName);
-                BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, PasswordInput, EnterPassword);
-                BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, LogginButton);
-                Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
-
-                return new HomePageObject(WebDriver);
-
-            }
-            catch (ElementNotVisibleException e)
-            {
-                Console.WriteLine("Test failded", e.Message);
-            }
-            return new HomePageObject(WebDriver);
+            WebDriver.WaitUntilFindElement(By.XPath(LoginInputField)).SendKeys(username);
+        }
+        public static void EnterPassword(string password)
+        {
+            WebDriver.WaitUntilFindElement(By.XPath(PasswordInputField)).SendKeys(password);
         }
 
-
-        public AuthorizationPageObject(IWebDriver webDriver)
+        public static void SigninFullMethod()
         {
-            WebDriver = webDriver;
+            HomePageObject.SignIn();
+            EnterUserName(enterUserName);
+            EnterPassword(enterPassword);
+            WebDriver.Click(By.XPath(LogginButton));
         }
+
     }
 
 }

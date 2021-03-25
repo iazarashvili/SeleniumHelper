@@ -1,10 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using SeleniumHelper.Base;
+using System;
+using System.Threading.Tasks;
 
 namespace SeleniumHelper.Base
 {
@@ -43,13 +41,13 @@ namespace SeleniumHelper.Base
                 switch (selector)
                 {
                     case ElementLocator.Id:
-                        webElement =  new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.Id(element)));
+                        webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.Id(element)));
                         break;
                     case ElementLocator.Class:
-                       webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element)));
+                        webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element)));
                         break;
                     case ElementLocator.Xpath:
-                       webElement =  new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.XPath(element)));
+                        webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.XPath(element)));
                         break;
                     case ElementLocator.Name:
                         webElement = new WebDriverWait(webDriver, TimeSpan.FromSeconds(seconds)).Until(ExpectedConditions.ElementToBeClickable(By.Name(element)));
@@ -158,13 +156,13 @@ namespace SeleniumHelper.Base
         }
 
         public static IWebElement IwebelementReturn(IWebDriver drv, ElementLocator selector, string element)
-        {            
+        {
             try
             {
                 switch (selector)
                 {
                     case ElementLocator.Id:
-                      webElement = drv.FindElement(By.Id(element));
+                        webElement = drv.FindElement(By.Id(element));
                         break;
                     case ElementLocator.Class:
                         webElement = drv.FindElement(By.ClassName(element));

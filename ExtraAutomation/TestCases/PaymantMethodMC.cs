@@ -1,26 +1,23 @@
 ﻿using ExtraAutomation.PageObject;
-using ExtraAutomationTesting;
 using NUnit.Framework;
-using SeleniumHelper.ComponentHelper;
+using OpenQA.Selenium;
+using QAssistant.Extensions;
 using SeleniumHelper.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
 {
-    class PaymantMethodMC : BaseClass
+    [TestFixture]
+    class PaymantMethodMC : CheckOutPageObject
     {
         [Test, Category("Paymant Test Mc")]
-        public void PaymantTestMc()
+        public static void PaymantTestMc()
         {
-            var signIn = new HomePageObject(WebDriver)
-                 .SignIn()
-                 .Login();
-            CheckOutPageObject.AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, CheckOutPageObject.PaymentByMc);
-            Assert.True(CheckMethods.CheckPaymentMethod(CheckOutPageObject.orderTotalAmount,
-               CheckOutPageObject.costOfTheItem, CheckOutPageObject.deliveryCost, WebDriver));
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, CheckOutPageObject.OrderCompleteButton);
+            AuthorizationPageObject.SigninFullMethod();
+            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByMc);
+            Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount, costOfTheItem, deliveryCost, WebDriver));
+            WebDriver.Click(By.XPath(OrderCompleteButton));
+
         }
     }
 }

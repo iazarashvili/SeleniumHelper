@@ -21,9 +21,9 @@ namespace SeleniumHelper.ComponentHelper
                 return false;
             }
         }
-        public static bool CheckCount(string first, string last, IWebDriver WebDriver)
+        public static bool CheckCount(string BasketProductQuantity, string last, IWebDriver WebDriver)
         {
-            IWebElement cartCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, first);
+            IWebElement cartCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, BasketProductQuantity);
             IWebElement orderCount = BaseMethods.WaitElementIsVisibleReturn(WebDriver, ElementLocator.Xpath, last);
             int cartNumber = int.Parse(cartCount.Text);
             int orderNumber = int.Parse(orderCount.Text);
@@ -51,8 +51,8 @@ namespace SeleniumHelper.ComponentHelper
             }
             else
             {
-                string first = deliveryPrice.Text;
-                string[] word = first.Split('₾');
+                string BasketProductQuantity = deliveryPrice.Text;
+                string[] word = BasketProductQuantity.Split('₾');
                 decimal delivery = int.Parse(word[0], NumberStyles.Any);
 
                 if ((delivery == 0) && (priceOrder == priceItem))
