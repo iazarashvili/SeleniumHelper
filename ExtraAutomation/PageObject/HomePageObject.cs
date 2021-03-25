@@ -1,23 +1,19 @@
 ﻿using ExtraAutomationTesting;
 using OpenQA.Selenium;
+using QAssistant.Extensions;
 using SeleniumHelper.Base;
 
 namespace ExtraAutomation.PageObject
 {
-    class HomePageObject : BaseClass
+    public class HomePageObject
     {
 
-        private static string SignInButton = "//span[text()='შესვლა']";
-        public HomePageObject(IWebDriver webDriver)
-        {
-            WebDriver = webDriver;
-        }
+        private static readonly string SignInButton = "//span[text()='შესვლა']";
 
-        public AuthorizationPageObject SignIn()
+        public static void SignIn()
         {
             BaseMethods.WaitSomeInterval(2);
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, SignInButton);
-            return new AuthorizationPageObject(WebDriver);
+            BaseClass.WebDriver.Click(By.XPath(SignInButton));
         }
 
     }
