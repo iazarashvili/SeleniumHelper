@@ -60,7 +60,7 @@ namespace SeleniumHelper.ComponentHelper
                     Console.WriteLine("The price of the products and the amount to be paid are correct");
                     return true;
                 }
-                else if ((delivery == 5) && (priceOrder < priceItem))
+                else if ((delivery == 7) && (priceOrder < priceItem))
                 {
                     Console.WriteLine("The price of the products and the amount to be paid are correct");
                     return true;
@@ -69,6 +69,26 @@ namespace SeleniumHelper.ComponentHelper
                 return false;
             }
 
+        }
+        public static void ClickCheckBox(IWebElement element)
+        {
+            element.Click();
+        }
+
+        public static bool IsCheckboxChecked(IWebElement element)
+        {
+            string flag = element.GetAttribute("checked");
+            if (flag == null)
+            {
+                return false;
+            }
+            else
+                return true;
+        }
+
+        public static bool IsCheckboxEnbaled(IWebElement element)
+        {
+            return element.Enabled;
         }
     }
 
