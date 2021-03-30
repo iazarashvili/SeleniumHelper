@@ -8,8 +8,8 @@ namespace ExtraAutomation.PageObject
     public class AuthorizationPageObject : BaseClass
     {
 
-        public static readonly string LoginInputField = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
-        public static readonly string PasswordInputField = "//input[@placeholder='პაროლი']";
+        private static readonly string LoginInputField = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
+        private static readonly string PasswordInputField = "//input[@placeholder='პაროლი']";
         public static readonly string LogginButton = "//span[text()=' შესვლა']";
         public static readonly string checkedlocator = "//span[contains(text(),' ტესტ')]";
 
