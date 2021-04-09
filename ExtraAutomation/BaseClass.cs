@@ -42,7 +42,6 @@ namespace ExtraAutomation
         [SetUp]
         protected static void DobeforeEach()
         {
-            WebDriver.Manage().Cookies.DeleteAllCookies();
             Chromeoptions.PageLoadStrategy = PageLoadStrategy.Normal;
             Chromeoptions.AddArguments("--disable-popup-blocking");
             Chromeoptions.AddArguments("test-type");

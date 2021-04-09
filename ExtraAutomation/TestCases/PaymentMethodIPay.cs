@@ -5,7 +5,7 @@ using SeleniumHelper.Base;
 namespace ExtraAutomation.TestCases
 {
     [TestFixture]
-    class PaymantMethodIPay : CheckOutPageObject
+    class PaymentMethodIPay : CheckOutPageObject
     {
         [Test, Category("Paymant Test Ipay")]
         public static void PaymantTestIpay()
