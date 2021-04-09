@@ -4,7 +4,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using QAssistant.Extensions;
 using QAssistant.WaitHelpers;
-using SeleniumHelper.ComponentHelper;
+using SeleniumHelper.Base;
 
 
 namespace ExtraAutomation.TestCases

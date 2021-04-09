@@ -3,7 +3,6 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using QAssistant.Extensions;
 using SeleniumHelper.Base;
-using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
 {

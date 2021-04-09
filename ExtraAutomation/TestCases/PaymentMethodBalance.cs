@@ -1,7 +1,6 @@
 ﻿using ExtraAutomation.PageObject;
 using NUnit.Framework;
 using SeleniumHelper.Base;
-using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
 {

@@ -1,5 +1,4 @@
-﻿using ExtraAutomationTesting;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using QAssistant.Extensions;
 using SeleniumHelper.Base;
 

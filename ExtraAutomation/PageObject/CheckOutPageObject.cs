@@ -1,5 +1,4 @@
-﻿using ExtraAutomationTesting;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumHelper.Base;
 
 namespace ExtraAutomation.PageObject
@@ -29,18 +28,18 @@ namespace ExtraAutomation.PageObject
 
         // -      ---------------------------------------------------------------------
 
-        public static void AddProductAndGoToTheCheckoutPage(IWebDriver WebDriver, ElementLocator element, string paymentMethod)
+        public static void AddProductAndGoToTheCheckoutPage(IWebDriver webDriver, ElementLocator element, string paymentMethod)
         {
-            BaseMethods.SendKeys(WebDriver, ElementLocator.Xpath, SearchKeywordInputField, "101757");
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, SearchButton);
+            BaseMethods.SendKeys(webDriver, ElementLocator.Xpath, SearchKeywordInputField, "101757");
+            BaseMethods.ClickElement(webDriver, ElementLocator.Xpath, SearchButton);
 
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, addProductButton);
+            BaseMethods.ClickElement(webDriver, ElementLocator.Xpath, addProductButton);
 
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, getBasket);
+            BaseMethods.ClickElement(webDriver, ElementLocator.Xpath, getBasket);
 
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, shopButton);
+            BaseMethods.ClickElement(webDriver, ElementLocator.Xpath, shopButton);
 
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, paymentMethod);
+            BaseMethods.ClickElement(webDriver, ElementLocator.Xpath, paymentMethod);
 
         }
     }

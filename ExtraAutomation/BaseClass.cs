@@ -4,20 +4,20 @@ using OpenQA.Selenium.Chrome;
 using SeleniumHelper.Base;
 using System;
 
-namespace ExtraAutomationTesting
+namespace ExtraAutomation
 {
     //driver.Wait().Until(ExpectedConditions.ElementToBeClickable(By.XPath("selectori aq "))).Click();
     [TestFixture]
     public class BaseClass
     {
         protected static IWebDriver WebDriver;
-        protected static IWebElement Element;
-        protected static ChromeOptions _chromeoptions;
+        protected static ChromeOptions Chromeoptions;
+
         [OneTimeSetUp]
         protected static void DoBeforeAllTheTest()
         {
-            _chromeoptions = new ChromeOptions();
-            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", _chromeoptions, TimeSpan.FromMinutes(2));
+            Chromeoptions = new ChromeOptions();
+            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", Chromeoptions, TimeSpan.FromMinutes(2));
 
         }
 
@@ -43,9 +43,9 @@ namespace ExtraAutomationTesting
         protected static void DobeforeEach()
         {
             WebDriver.Manage().Cookies.DeleteAllCookies();
-            _chromeoptions.PageLoadStrategy = PageLoadStrategy.Normal;
-            _chromeoptions.AddArguments("--disable-popup-blocking");
-            _chromeoptions.AddArguments("test-type");
+            Chromeoptions.PageLoadStrategy = PageLoadStrategy.Normal;
+            Chromeoptions.AddArguments("--disable-popup-blocking");
+            Chromeoptions.AddArguments("test-type");
             WebDriver.Manage().Window.Maximize();
             WebDriver.Navigate().GoToUrl("https://extra.ge/");
             BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
