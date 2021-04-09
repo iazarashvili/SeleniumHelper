@@ -1,10 +1,12 @@
 ﻿using ExtraAutomation.PageObject;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using SeleniumHelper.Base;
 using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
 {
+    [AllureNUnit]
     [TestFixture]
     class Basket : BasketPageObject
     {

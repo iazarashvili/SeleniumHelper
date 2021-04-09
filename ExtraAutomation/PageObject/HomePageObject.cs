@@ -5,7 +5,7 @@ using SeleniumHelper.Base;
 
 namespace ExtraAutomation.PageObject
 {
-    public class HomePageObject
+    public class HomePageObject : BaseClass
     {
 
         private static readonly string SignInButton = "//span[text()='შესვლა']";
