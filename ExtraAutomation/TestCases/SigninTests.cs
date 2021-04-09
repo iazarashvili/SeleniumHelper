@@ -1,4 +1,5 @@
 ﻿using ExtraAutomation.PageObject;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using QAssistant.Extensions;
@@ -12,6 +13,7 @@ namespace ExtraAutomation.TestCases
 
     //[Parallelizable(ParallelScope.Children)]
     [TestFixture]
+    [AllureNUnit]
     public class SigninTests : AuthorizationPageObject
     {
 

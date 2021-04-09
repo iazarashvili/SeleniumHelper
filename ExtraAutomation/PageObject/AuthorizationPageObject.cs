@@ -11,7 +11,7 @@ namespace ExtraAutomation.PageObject
         private static readonly string LoginInputField = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         private static readonly string PasswordInputField = "//input[@placeholder='პაროლი']";
         public static readonly string LogginButton = "//span[text()=' შესვლა']";
-        public static readonly string checkedlocator = "//span[contains(text(),' ტესტ')]";
+        public static readonly string checkedlocator = "//span[contains(text(),' ilia')]";
 
         //public static readonly string enterUserName = "walih51209@wedbo.net";
         //public static readonly string enterPassword = "Extra2222";

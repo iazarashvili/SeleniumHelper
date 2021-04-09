@@ -10,26 +10,25 @@ namespace ExtraAutomationTesting
     [TestFixture]
     public class BaseClass
     {
-        public static IWebDriver WebDriver;
-        public static IWebElement Element;
-
-        [SetUp]
-        public static void DoBeforeAllTheTest()
+        protected static IWebDriver WebDriver;
+        protected static IWebElement Element;
+        protected static ChromeOptions _chromeoptions;
+        [OneTimeSetUp]
+        protected static void DoBeforeAllTheTest()
         {
-            var chromeOption = new ChromeOptions();
-            chromeOption.PageLoadStrategy = PageLoadStrategy.Normal;
-            chromeOption.AddArguments("--disable-popup-blocking");
-            chromeOption.AddArguments("test-type");
-            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", chromeOption, TimeSpan.FromMinutes(2));
-            WebDriver.Manage().Window.Maximize();
-            WebDriver.Navigate().GoToUrl("https://extra.ge/");
-            BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
+            _chromeoptions = new ChromeOptions();
+            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", _chromeoptions, TimeSpan.FromMinutes(2));
 
         }
 
+        [OneTimeTearDown]
+        protected static void DoAfterAllTheTests()
+        {
+
+        }
 
         [TearDown]
-        public static void DoAfterEach()
+        protected static void DoAfterEach()
         {
 
             WebDriver.Close();
@@ -37,5 +36,16 @@ namespace ExtraAutomationTesting
 
         }
 
+        [SetUp]
+        protected static void DobeforeEach()
+        {
+            WebDriver.Manage().Cookies.DeleteAllCookies();
+            _chromeoptions.PageLoadStrategy = PageLoadStrategy.Normal;
+            _chromeoptions.AddArguments("--disable-popup-blocking");
+            _chromeoptions.AddArguments("test-type");
+            WebDriver.Manage().Window.Maximize();
+            WebDriver.Navigate().GoToUrl("https://extra.ge/");
+            BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
+        }
     }
 }
