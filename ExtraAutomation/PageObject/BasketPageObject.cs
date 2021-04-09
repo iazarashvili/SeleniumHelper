@@ -1,9 +1,7 @@
-﻿using ExtraAutomationTesting;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using QAssistant.Extensions;
 using SeleniumHelper.Base;
-using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.PageObject
 {
@@ -25,10 +23,13 @@ namespace ExtraAutomation.PageObject
         public static void AddProductInBasket()
         {
             IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
-            js.ExecuteScript("window.scrollBy(0,1050);");
-            BaseMethods.WaitSomeInterval(3);
-            WebDriver.WaitUntilFindElement(By.XPath(addProductHomePage)).Click();
-            js.ExecuteScript("window.scrollBy(0,-1050);");
+            if (js != null)
+            {
+                js.ExecuteScript("window.scrollBy(0,1050);");
+                BaseMethods.WaitSomeInterval(3);
+                WebDriver.WaitUntilFindElement(By.XPath(addProductHomePage)).Click();
+                js.ExecuteScript("window.scrollBy(0,-1050);");
+            }
         }
 
 

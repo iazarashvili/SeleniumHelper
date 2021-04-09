@@ -3,12 +3,11 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using QAssistant.Extensions;
 using SeleniumHelper.Base;
-using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
 {
     [TestFixture]
-    class PaymantMethodMC : CheckOutPageObject
+    class PaymantMethodMc : CheckOutPageObject
     {
         [Test, Category("Paymant Test Mc")]
         public static void PaymantTestMc()

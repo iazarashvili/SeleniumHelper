@@ -2,7 +2,6 @@
 using NUnit.Allure.Core;
 using NUnit.Framework;
 using SeleniumHelper.Base;
-using SeleniumHelper.ComponentHelper;
 
 namespace ExtraAutomation.TestCases
 {
@@ -14,6 +13,7 @@ namespace ExtraAutomation.TestCases
 
         public static void BasketTest()
         {
+
             AddProductInBasket();
             GetBasket();
             Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
