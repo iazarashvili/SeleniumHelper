@@ -12,7 +12,7 @@ namespace ExtraAutomation.PageObject
         public static void SignIn()
         {
             BaseMethods.WaitSomeInterval(2);
-            BaseClass.WebDriver.Click(By.XPath(SignInButton));
+            WebDriver.Click(By.XPath(SignInButton));
         }
 
     }

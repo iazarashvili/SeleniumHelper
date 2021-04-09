@@ -32,15 +32,15 @@ namespace SeleniumHelper.Base
             return false;
         }
 
-        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webdriver)
+        public static bool CheckPaymentMethod(string orderTotalAmount, string costOfTheItem, string deliveryCost, IWebDriver webDriver)
         {
-            IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, orderTotalAmount);
+            IWebElement orderPrice = BaseMethods.WaitElementIsVisibleReturn(webDriver, ElementLocator.Xpath, orderTotalAmount);
             decimal priceOrder = decimal.Parse(orderPrice.Text, NumberStyles.Any);
 
-            IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, costOfTheItem);
+            IWebElement itemPrice = BaseMethods.WaitElementIsVisibleReturn(webDriver, ElementLocator.Xpath, costOfTheItem);
             decimal priceItem = decimal.Parse(itemPrice.Text, NumberStyles.Any);
 
-            IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webdriver, ElementLocator.Xpath, deliveryCost);
+            IWebElement deliveryPrice = BaseMethods.WaitElementIsVisibleReturn(webDriver, ElementLocator.Xpath, deliveryCost);
 
             if (("უფასო" == deliveryPrice.Text) && (priceOrder == priceItem))
             {
