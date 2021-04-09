@@ -21,12 +21,14 @@ namespace ExtraAutomationTesting
 
         }
 
+        // სრულდება ერთხელ ყველა ტესტის შემდეგ
         [OneTimeTearDown]
         protected static void DoAfterAllTheTests()
         {
 
         }
 
+        //სრულდება ერთხელ ყველა ტესტის შემდეგ
         [TearDown]
         protected static void DoAfterEach()
         {
@@ -36,6 +38,7 @@ namespace ExtraAutomationTesting
 
         }
 
+        // ყველა ტესტის წინ
         [SetUp]
         protected static void DobeforeEach()
         {
