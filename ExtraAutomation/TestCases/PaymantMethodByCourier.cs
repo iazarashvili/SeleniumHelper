@@ -12,7 +12,7 @@ namespace ExtraAutomation.TestCases
         public static void PaymantTestCash()
         {
             AuthorizationPageObject.SigninFullMethod();
-            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByCourier);
+            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, paymentByCourier);
             Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount,
                costOfTheItem, deliveryCost, WebDriver));
         }

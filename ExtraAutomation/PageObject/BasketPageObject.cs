@@ -7,12 +7,12 @@ namespace ExtraAutomation.PageObject
 {
     public class BasketPageObject : BaseClass
     {
-        public static readonly string BasketProductQuantity = "//span[@class='_s_position-absolute _s_position-minus-r-px--1 _s_position-t-px--0 _s_label _s_label-sm _s_color-orange _s_label-bold']";
-        public static readonly string OrderProdyctQuantity = "//var[@class='text-normal font-medium font-size-14 text-gray'][1]";
+        public static readonly string basketProductQuantity = "//span[@class='_s_position-absolute _s_position-minus-r-px--1 _s_position-t-px--0 _s_label _s_label-sm _s_color-orange _s_label-bold']";
+        public static readonly string orderProdyctQuantity = "//var[@class='text-normal font-medium font-size-14 text-gray'][1]";
         public static readonly By findCountProduct = By.XPath("//div[@class='mr-md-30px flex-grow-1']//div//div//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']//a[1]");
 
 
-        public static readonly string DeleteBasket = "//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']/child::a";
+        public static readonly string deleteBasket = "//div[@class='d-flex justify-content-md-between justify-content-end align-items-end']/child::a";
         public static readonly string addProductHomePage = "//div[contains(@class,'slider-container')][1]//app-product-item[2]//button[contains(text(),' კალათაში დამატება ')]";
         public static readonly string basketButton = "//span[text()='კალათა']";
         public static readonly string basketInButton = "//app-basket//button[contains(text(),'კალათა')]";
@@ -39,7 +39,7 @@ namespace ExtraAutomation.PageObject
             int element = WebDriver.FindElements(findCountProduct).Count;
             for (int i = 0; i < element; i++)
             {
-                WebDriver.Click(By.XPath(DeleteBasket));
+                WebDriver.Click(By.XPath(deleteBasket));
                 BaseMethods.WaitSomeInterval(1);
             }
         }
@@ -47,13 +47,13 @@ namespace ExtraAutomation.PageObject
         public static void AddProductQuantity()
         {
             WebDriver.WaitUntilFindElement(By.XPath(addProductQuantity)).Click();
-            Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
+            Assert.IsTrue(CheckMethods.CheckCount(basketProductQuantity, orderProdyctQuantity, WebDriver));
         }
 
         public static void ReduceProductQuantity()
         {
             WebDriver.WaitUntilFindElement(By.XPath(reduceProductQuantity)).Click();
-            Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
+            Assert.IsTrue(CheckMethods.CheckCount(basketProductQuantity, orderProdyctQuantity, WebDriver));
         }
 
         public static void GetBasket()

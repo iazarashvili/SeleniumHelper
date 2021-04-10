@@ -15,11 +15,11 @@ namespace ExtraAutomation.TestCases
 
             AddProductInBasket();
             GetBasket();
-            Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
+            Assert.IsTrue(CheckMethods.CheckCount(basketProductQuantity, orderProdyctQuantity, WebDriver));
             AddProductQuantity();
-            Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
+            Assert.IsTrue(CheckMethods.CheckCount(basketProductQuantity, orderProdyctQuantity, WebDriver));
             ReduceProductQuantity();
-            Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
+            Assert.IsTrue(CheckMethods.CheckCount(basketProductQuantity, orderProdyctQuantity, WebDriver));
             BaseMethods.WaitSomeInterval(1);
             DeleteProducts();
         }

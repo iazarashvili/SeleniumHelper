@@ -12,9 +12,9 @@ namespace ExtraAutomation.TestCases
         public static void PaymantTestBalance()
         {
             AuthorizationPageObject.SigninFullMethod();
-            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByBalance);
+            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, paymentByBalance);
             Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount, costOfTheItem, deliveryCost, WebDriver));
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, OrderCompleteButton);
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, orderCompleteButton);
         }
     }
 }

@@ -14,10 +14,10 @@ namespace ExtraAutomation.TestCases
         public static void PaymantPlusPoint()
         {
             AuthorizationPageObject.SigninFullMethod();
-            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByPlusPoint);
+            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, paymentByPlusPoint);
             Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount,
                 costOfTheItem, deliveryCost, WebDriver));
-            WebDriver.WaitUntilFindElement(By.XPath(OrderCompleteButton)).Click();
+            WebDriver.WaitUntilFindElement(By.XPath(orderCompleteButton)).Click();
 
         }
     }

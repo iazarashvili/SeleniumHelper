@@ -1,54 +1,75 @@
 ﻿using ExtraAutomation.PageObject;
-using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using QAssistant.Extensions;
-using QAssistant.WaitHelpers;
 using SeleniumHelper.Base;
-
+using System;
+using System.Security.Authentication;
 
 namespace ExtraAutomation.TestCases
 {
 
 
-    //[Parallelizable(ParallelScope.Children)]
+
     [TestFixture]
-    [AllureNUnit]
     public class SigninTests : AuthorizationPageObject
     {
 
         [Test, Category("Sucssesful Login Test")]
         public static void SucssesfulLoginTest()
         {
-            Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
-            HomePageObject.SignIn();
-            EnterUserName(enterUserName);
-            EnterPassword(enterPassword);
-            WebDriver.Click(By.XPath(LogginButton));
-            Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
+            try
+            {
+                Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
+                HomePageObject.SignIn();
+                EnterUserName(enterUserName);
+                EnterPassword(enterPassword);
+                WebDriver.Click(By.XPath(logginButton));
+                Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
+            }
+            catch (AuthenticationException ex)
+            {
+                Console.WriteLine("Sucssesful Login test was not performed" + ex.Message);
+            }
+
+            Console.WriteLine("Login test was performed successfully");
         }
 
         [Test, Category("Wrong Username Login Test")]
         public static void WrongUserNameLoginTest()
         {
-            Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
-            HomePageObject.SignIn();
-            EnterUserName("Wrong Username");
-            EnterPassword(enterPassword);
-            Assert.IsNotNull(ExpectedConditions.ElementToBeClickable(By.XPath(LogginButton)));
+            try
+            {
+                Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
+                HomePageObject.SignIn();
+                EnterUserName("Wrong Username");
+                EnterPassword(enterPassword);
+                WebDriver.WaitUntilElementIsDisplayed(By.XPath(validLoginEnterWrongPass));
+            }
+            catch (AuthenticationException ex)
+            {
+                Console.WriteLine("WrongUserNameLoginTest The test was not performed" + ex.Message);
+            }
 
+            Console.WriteLine("WrongUserNameLoginTest The test was performed successfully");
         }
 
         [Test, Category("Wrong Password Login Test")]
         public static void WrongPasswordLoginTest()
         {
-            Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
-            HomePageObject.SignIn();
-            EnterUserName(enterUserName);
-            EnterPassword("wrongPassword");
-            WebDriver.Click(By.XPath(LogginButton));
-            WebDriver.WaitUntilFindElement(By.XPath(ValidLoginEnterWrongPass));
-
+            try
+            {
+                Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
+                HomePageObject.SignIn();
+                EnterUserName(enterUserName);
+                EnterPassword("wrongPassword");
+                WebDriver.WaitUntilFindElement(By.XPath(validLoginEnterWrongPass));
+            }
+            catch (AuthenticationException ex)
+            {
+                Console.WriteLine("Wrong Password Login Test was not performed" + ex.Message);
+            }
+            Console.WriteLine("Wrong Password Login  test was performed successfully");
         }
     }
 }
