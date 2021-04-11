@@ -16,18 +16,19 @@ namespace ExtraAutomation
     public class BaseClass
     {
         protected static IWebDriver WebDriver;
-        protected static ChromeOptions Chromeoptions;
+        private static ChromeOptions _chromeOptions;
         protected static ExtentReports Extent;
         protected static ExtentTest Test;
+
 
 
         [OneTimeSetUp]
         protected static void DoBeforeAllTheTest()
         {
-            Chromeoptions = new ChromeOptions();
-            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", Chromeoptions, TimeSpan.FromMinutes(12));
 
-            // reports
+            _chromeOptions = new ChromeOptions();
+
+
 
             var path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
             if (path != null)
@@ -89,13 +90,12 @@ namespace ExtraAutomation
         // ყველა ტესტის წინ
 
         [SetUp]
-        protected static void DobeforeEach()
+        protected static void DoBeforeEach()
         {
-            Chromeoptions.PageLoadStrategy = PageLoadStrategy.Normal;
-            Chromeoptions.AddArguments("--disable-popup-blocking");
-            Chromeoptions.AddArguments("test-type");
-            WebDriver.Manage().Window.Maximize();
+            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", _chromeOptions, TimeSpan.FromMinutes(12));
             WebDriver.Navigate().GoToUrl("https://extra.ge/");
+            WebDriver.Manage().Window.Maximize();
+            _chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
             BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
             Test = Extent.CreateTest(TestContext.CurrentContext.Test.Name);
         }

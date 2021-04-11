@@ -15,7 +15,8 @@ namespace ExtraAutomation.TestCases
     public class SigninTests : AuthorizationPageObject
     {
 
-        [Test, Category("Sucssesful Login Test")]
+        [Test]
+        [Category("Sucssesful Login Test")]
         public static void SucssesfulLoginTest()
         {
             try
@@ -35,7 +36,8 @@ namespace ExtraAutomation.TestCases
             Console.WriteLine("Login test was performed successfully");
         }
 
-        [Test, Category("Wrong Username Login Test")]
+        [Test]
+        [Category("Wrong Username Login Test")]
         public static void WrongUserNameLoginTest()
         {
             try
@@ -54,7 +56,8 @@ namespace ExtraAutomation.TestCases
             Console.WriteLine("WrongUserNameLoginTest The test was performed successfully");
         }
 
-        [Test, Category("Wrong Password Login Test")]
+        [Test]
+        [Category("Wrong Password Login Test")]
         public static void WrongPasswordLoginTest()
         {
             try
