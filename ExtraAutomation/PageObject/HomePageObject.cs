@@ -7,7 +7,7 @@ namespace ExtraAutomation.PageObject
     public class HomePageObject : BaseClass
     {
 
-        private static readonly string SignInButton = "//span[text()='შესვლა']";
+        private const string SignInButton = "//span[text()='შესვლა']";
 
         public static void SignIn()
         {

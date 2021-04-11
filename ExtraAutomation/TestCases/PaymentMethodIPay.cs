@@ -12,7 +12,7 @@ namespace ExtraAutomation.TestCases
         {
             AuthorizationPageObject.SigninFullMethod();
             AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByCardIpay);
-            Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount, costOfTheItem, deliveryCost, WebDriver));
+            Assert.True(CheckMethods.CheckPaymentMethod(OrderTotalAmount, CostOfTheItem, DeliveryCost, WebDriver));
             BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, OrderCompleteButton);
 
         }

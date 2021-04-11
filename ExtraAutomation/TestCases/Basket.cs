@@ -16,9 +16,9 @@ namespace ExtraAutomation.TestCases
             AddProductInBasket();
             GetBasket();
             Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
-            AddProductQuantity();
+            AddProductQuantityMethod();
             Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
-            ReduceProductQuantity();
+            ReduceProductQuantityMethod();
             Assert.IsTrue(CheckMethods.CheckCount(BasketProductQuantity, OrderProdyctQuantity, WebDriver));
             BaseMethods.WaitSomeInterval(1);
             DeleteProducts();

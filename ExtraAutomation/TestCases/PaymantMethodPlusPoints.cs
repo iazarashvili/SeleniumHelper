@@ -15,8 +15,8 @@ namespace ExtraAutomation.TestCases
         {
             AuthorizationPageObject.SigninFullMethod();
             AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByPlusPoint);
-            Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount,
-                costOfTheItem, deliveryCost, WebDriver));
+            Assert.True(CheckMethods.CheckPaymentMethod(OrderTotalAmount,
+                CostOfTheItem, DeliveryCost, WebDriver));
             WebDriver.WaitUntilFindElement(By.XPath(OrderCompleteButton)).Click();
 
         }
