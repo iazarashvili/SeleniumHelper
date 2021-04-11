@@ -7,6 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Apitests\**" />
+      <EmbeddedResource Remove="Apitests\**" />
+      <None Remove="Apitests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="nunit" Version="3.13.1" />
         <PackageReference Include="NUnit.Allure" Version="1.0.13" />
         <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
@@ -19,10 +25,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\SeleniumHelper\SeleniumHelper.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Apitests\" />
     </ItemGroup>
 
 </Project>

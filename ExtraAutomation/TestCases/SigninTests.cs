@@ -1,5 +1,4 @@
 ﻿using ExtraAutomation.PageObject;
-using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using QAssistant.Extensions;
@@ -11,13 +10,13 @@ namespace ExtraAutomation.TestCases
 {
 
 
-    //[Parallelizable(ParallelScope.Children)]
+    [Parallelizable(ParallelScope.Fixtures)]
     [TestFixture]
-    [AllureNUnit]
     public class SigninTests : AuthorizationPageObject
     {
 
-        [Test, Category("Sucssesful Login Test")]
+        [Test]
+        [Category("Sucssesful Login Test")]
         public static void SucssesfulLoginTest()
         {
             Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
@@ -28,7 +27,8 @@ namespace ExtraAutomation.TestCases
             Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
         }
 
-        [Test, Category("Wrong Username Login Test")]
+        [Test]
+        [Category("Wrong Username Login Test")]
         public static void WrongUserNameLoginTest()
         {
             Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
@@ -39,7 +39,8 @@ namespace ExtraAutomation.TestCases
 
         }
 
-        [Test, Category("Wrong Password Login Test")]
+        [Test]
+        [Category("Wrong Password Login Test")]
         public static void WrongPasswordLoginTest()
         {
             Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
