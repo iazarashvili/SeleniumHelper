@@ -13,9 +13,9 @@ namespace ExtraAutomation.TestCases
         public static void PaymantTestMc()
         {
             AuthorizationPageObject.SigninFullMethod();
-            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, paymentByMc);
-            Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount, costOfTheItem, deliveryCost, WebDriver));
-            WebDriver.Click(By.XPath(orderCompleteButton));
+            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByMc);
+            Assert.True(CheckMethods.CheckPaymentMethod(OrderTotalAmount, CostOfTheItem, DeliveryCost, WebDriver));
+            WebDriver.Click(By.XPath(OrderCompleteButton));
 
         }
     }

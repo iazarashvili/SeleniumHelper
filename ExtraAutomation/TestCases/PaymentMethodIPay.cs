@@ -11,9 +11,9 @@ namespace ExtraAutomation.TestCases
         public static void PaymantTestIpay()
         {
             AuthorizationPageObject.SigninFullMethod();
-            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, paymentByCardIpay);
-            Assert.True(CheckMethods.CheckPaymentMethod(orderTotalAmount, costOfTheItem, deliveryCost, WebDriver));
-            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, orderCompleteButton);
+            AddProductAndGoToTheCheckoutPage(WebDriver, ElementLocator.Xpath, PaymentByCardIpay);
+            Assert.True(CheckMethods.CheckPaymentMethod(OrderTotalAmount, CostOfTheItem, DeliveryCost, WebDriver));
+            BaseMethods.ClickElement(WebDriver, ElementLocator.Xpath, OrderCompleteButton);
 
         }
     }

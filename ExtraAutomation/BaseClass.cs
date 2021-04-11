@@ -1,6 +1,7 @@
 ﻿
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports.Reporter.Configuration;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
@@ -17,8 +18,8 @@ namespace ExtraAutomation
     {
         protected static IWebDriver WebDriver;
         private static ChromeOptions _chromeOptions;
-        protected static ExtentReports Extent;
-        protected static ExtentTest Test;
+        private static ExtentReports _extent;
+        private static ExtentTest _test;
 
 
 
@@ -37,17 +38,15 @@ namespace ExtraAutomation
                 var projectPath = new Uri(actualPath).LocalPath;
                 Directory.CreateDirectory(projectPath + "Reports");
                 var reportPath = projectPath + @"Reports\ExtentReport.html";
-                var htmlReporter = new ExtentHtmlReporter(reportPath);
-                Extent = new ExtentReports();
-                Extent.AttachReporter(htmlReporter);
-                //var sparkAll = new ExtentKlovReporter("Klov.html");
-                //Extent.AttachReporter(htmlReporter, sparkAll);
+                var htmlReporter = new ExtentHtmlReporter(reportPath, ViewStyle.Default);
+                _extent = new ExtentReports();
+                _extent.AttachReporter(htmlReporter);
+
             }
 
-
-            Extent.AddSystemInfo("Host Name", "LocalHost");
-            Extent.AddSystemInfo("Environment", "QA");
-            Extent.AddSystemInfo("UserName", "TestUser");
+            _extent.AddSystemInfo("Host Name", "LocalHost");
+            _extent.AddSystemInfo("Environment", "QA");
+            _extent.AddSystemInfo("UserName", "TestUser");
         }
 
         // სრულდება ერთხელ ყველა ტესტის შემდეგ
@@ -71,7 +70,7 @@ namespace ExtraAutomation
             {
                 case TestStatus.Failed:
                     logstatus = Status.Fail;
-                    Test.Log(Status.Fail, "Fail");
+                    _test.Log(Status.Fail, "Fail");
                     break;
                 case TestStatus.Inconclusive:
                     logstatus = Status.Warning;
@@ -83,8 +82,8 @@ namespace ExtraAutomation
                     logstatus = Status.Pass;
                     break;
             }
-            Test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
-            Extent.Flush();
+            _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
+            _extent.Flush();
             WebDriver.Quit();
         }
         // ყველა ტესტის წინ
@@ -97,7 +96,7 @@ namespace ExtraAutomation
             WebDriver.Manage().Window.Maximize();
             _chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
             BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
-            Test = Extent.CreateTest(TestContext.CurrentContext.Test.Name);
+            _test = _extent.CreateTest(TestContext.CurrentContext.Test.Name);
         }
     }
 }

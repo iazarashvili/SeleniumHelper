@@ -7,12 +7,12 @@ namespace ExtraAutomation.PageObject
     public class HomePageObject : BaseClass
     {
 
-        private static readonly string signInButton = "//span[text()='შესვლა']";
+        private const string SignInButton = "//span[text()='შესვლა']";
 
         public static void SignIn()
         {
             BaseMethods.WaitSomeInterval(2);
-            WebDriver.Click(By.XPath(signInButton));
+            WebDriver.Click(By.XPath(SignInButton));
         }
 
     }

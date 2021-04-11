@@ -23,10 +23,10 @@ namespace ExtraAutomation.TestCases
             {
                 Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
                 HomePageObject.SignIn();
-                EnterUserName(enterUserName);
-                EnterPassword(enterPassword);
-                WebDriver.Click(By.XPath(logginButton));
-                Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, checkedlocator));
+                EnterUserNameMethod(EnterUserName);
+                EnterPasswordMethod(EnterPassword);
+                WebDriver.Click(By.XPath(LoginButton));
+                Assert.IsTrue(CheckMethods.CheckValidLogin(WebDriver, CheckedLocator));
             }
             catch (AuthenticationException ex)
             {
@@ -44,9 +44,9 @@ namespace ExtraAutomation.TestCases
             {
                 Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
                 HomePageObject.SignIn();
-                EnterUserName("Wrong Username");
-                EnterPassword(enterPassword);
-                WebDriver.WaitUntilElementIsDisplayed(By.XPath(validLoginEnterWrongPass));
+                EnterUserNameMethod("Wrong Username");
+                EnterPasswordMethod(EnterPassword);
+                WebDriver.WaitUntilElementIsDisplayed(By.XPath(ValidLoginEnterWrongPass));
             }
             catch (AuthenticationException ex)
             {
@@ -64,9 +64,9 @@ namespace ExtraAutomation.TestCases
             {
                 Assert.AreEqual(WebDriver.Title, "🌈 Extra.ge - რაც გაგიხარდება");
                 HomePageObject.SignIn();
-                EnterUserName(enterUserName);
-                EnterPassword("wrongPassword");
-                WebDriver.WaitUntilFindElement(By.XPath(validLoginEnterWrongPass));
+                EnterUserNameMethod(EnterUserName);
+                EnterPasswordMethod("wrongPassword");
+                WebDriver.WaitUntilFindElement(By.XPath(ValidLoginEnterWrongPass));
             }
             catch (AuthenticationException ex)
             {
