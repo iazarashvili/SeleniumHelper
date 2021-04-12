@@ -7,6 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="GeneralHook\**" />
+      <EmbeddedResource Remove="GeneralHook\**" />
+      <None Remove="GeneralHook\**" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="ExtentReports" Version="4.1.0" />
         <PackageReference Include="nunit" Version="3.13.1" />
         <PackageReference Include="NUnit.Allure" Version="1.0.13" />
@@ -21,10 +27,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\SeleniumHelper\SeleniumHelper.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="GeneralHook\" />
     </ItemGroup>
 
 </Project>
