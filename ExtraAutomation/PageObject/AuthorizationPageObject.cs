@@ -11,7 +11,7 @@ namespace ExtraAutomation.PageObject
         private const string LoginInputField = "//input[@placeholder='ტელეფონი ან ელ.ფოსტა']";
         private const string PasswordInputField = "//input[@placeholder='პაროლი']";
         protected const string LoginButton = "//span[text()=' შესვლა']";
-        protected const string CheckedLocator = "//span[contains(text(),' ilia')]";
+        protected const string CheckedLocator = "//span[contains(text(),' Test User')]";
 
         //public static readonly string EnterUserNameMethod = "walih51209@wedbo.net";
         //public static readonly string enterPassword = "Extra2222";
