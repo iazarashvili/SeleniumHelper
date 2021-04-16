@@ -10,7 +10,6 @@ using SeleniumHelper.Base;
 using System;
 using System.IO;
 
-
 namespace ExtraAutomation
 {
     //driver.Wait().Until(ExpectedConditions.ElementToBeClickable(By.XPath("selectori aq "))).Click();
@@ -23,15 +22,9 @@ namespace ExtraAutomation
         private static ExtentTest _test;
 
 
-
         [OneTimeSetUp]
         protected static void DoBeforeAllTheTest()
         {
-
-
-            _chromeOptions = new ChromeOptions();
-            _extent = new ExtentReports();
-
 
             var path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
             if (path != null)
@@ -41,6 +34,7 @@ namespace ExtraAutomation
                 Directory.CreateDirectory(projectPath + "Reports");
                 var reportPath = projectPath + @"Reports\ExtentReport.html";
                 var htmlReporter = new ExtentHtmlReporter(reportPath, ViewStyle.Default);
+                _extent = new ExtentReports();
                 _extent.AttachReporter(htmlReporter);
 
             }
