@@ -10,6 +10,7 @@ using SeleniumHelper.Base;
 using System;
 using System.IO;
 
+
 namespace ExtraAutomation
 {
     //driver.Wait().Until(ExpectedConditions.ElementToBeClickable(By.XPath("selectori aq "))).Click();
@@ -27,8 +28,9 @@ namespace ExtraAutomation
         protected static void DoBeforeAllTheTest()
         {
 
-            _chromeOptions = new ChromeOptions();
 
+            _chromeOptions = new ChromeOptions();
+            _extent = new ExtentReports();
 
 
             var path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
@@ -39,7 +41,6 @@ namespace ExtraAutomation
                 Directory.CreateDirectory(projectPath + "Reports");
                 var reportPath = projectPath + @"Reports\ExtentReport.html";
                 var htmlReporter = new ExtentHtmlReporter(reportPath, ViewStyle.Default);
-                _extent = new ExtentReports();
                 _extent.AttachReporter(htmlReporter);
 
             }
@@ -54,7 +55,7 @@ namespace ExtraAutomation
         [OneTimeTearDown]
         protected static void DoAfterAllTheTests()
         {
-
+            _extent.Flush();
         }
 
         //სრულდება ერთხელ ყველა ტესტის შემდეგ
@@ -65,12 +66,11 @@ namespace ExtraAutomation
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace) ? ""
                 : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
-            Status logstatus;
+            Status logstatus = Status.Pass;
             switch (status)
             {
                 case TestStatus.Failed:
                     logstatus = Status.Fail;
-                    _test.Log(Status.Fail, "Fail");
                     break;
                 case TestStatus.Inconclusive:
                     logstatus = Status.Warning;
@@ -83,7 +83,7 @@ namespace ExtraAutomation
                     break;
             }
             _test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
-            _extent.Flush();
+
             WebDriver.Quit();
         }
         // ყველა ტესტის წინ
@@ -91,12 +91,12 @@ namespace ExtraAutomation
         [SetUp]
         protected static void DoBeforeEach()
         {
-            WebDriver = new ChromeDriver(@"E:\Extra\NewProjectAuto\SeleniumHelper\Driver", _chromeOptions, TimeSpan.FromMinutes(12));
+            _extent.CreateTest(TestContext.CurrentContext.Test.Name);
+            WebDriver = new ChromeDriver(@"D:\GitProj\SeleniumHelper\SeleniumHelper\Driver", _chromeOptions, TimeSpan.FromMinutes(12));
             WebDriver.Navigate().GoToUrl("https://extra.ge/");
             WebDriver.Manage().Window.Maximize();
             _chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
             BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
-            _test = _extent.CreateTest(TestContext.CurrentContext.Test.Name);
         }
     }
 }

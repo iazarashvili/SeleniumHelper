@@ -19,12 +19,12 @@ namespace SeleniumHelper.Base
                 return false;
             }
         }
-        public static bool CheckCount(string basketProductQuantity, string last, IWebDriver webDriver)
+        public static bool CheckCount(string? basketProductQuantity, string? orderProdyctQuantity, IWebDriver webDriver)
         {
             var cartCount = BaseMethods.WaitElementIsVisibleReturn(webDriver, ElementLocator.Xpath, basketProductQuantity);
             var cartNumber = int.Parse(cartCount.Text);
 
-            var orderCount = BaseMethods.WaitElementIsVisibleReturn(webDriver, ElementLocator.Xpath, last);
+            var orderCount = BaseMethods.WaitElementIsVisibleReturn(webDriver, ElementLocator.Xpath, orderProdyctQuantity);
             var orderNumber = int.Parse(orderCount.Text);
 
             if (cartNumber == orderNumber) return true;
