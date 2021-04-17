@@ -27,6 +27,7 @@ namespace ExtraAutomation
         {
             _chromeOptions = new ChromeOptions();
             _chromeOptions.AddArgument("start-maximized");
+            _chromeOptions.AddArgument("disable-popup-blocking");
             WebDriver = new ChromeDriver(@"D:\Projects\SeleniumHelper\SeleniumHelper\Driver", _chromeOptions);
         }
 
@@ -52,7 +53,6 @@ namespace ExtraAutomation
         {
             
             WebDriver.Navigate().GoToUrl("https://extra.ge/");
-            
             BaseMethods.ShouldLocate(WebDriver, "https://extra.ge/");
         }
     }
