@@ -1,14 +1,10 @@
 ﻿
 using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
-using AventStack.ExtentReports.Reporter.Configuration;
 using NUnit.Framework;
-using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumHelper.Base;
 using System;
-using System.IO;
 
 
 namespace ExtraAutomation
@@ -48,8 +44,37 @@ namespace ExtraAutomation
         [TearDown]
         protected static void DoAfterEach()
         {
-            
 
+<<<<<<< Updated upstream
+
+=======
+            try
+            {
+                var status = TestContext.CurrentContext.Result.Outcome.Status;
+                var stacktrace = " +TestContext.CurrentContext.Result.StackTrace + ";
+                var errorMessage = TestContext.CurrentContext.Result.Message;
+                Status logstatus;
+                switch (status)
+                {
+                    case TestStatus.Failed:
+                        logstatus = Status.Fail;
+                        _test.Log(logstatus, "Test ended with " + logstatus + " – " + errorMessage);
+                        break;
+                    case TestStatus.Skipped:
+                        logstatus = Status.Skip;
+                        _test.Log(logstatus, "Test ended with " + logstatus);
+                        break;
+                    default:
+                        logstatus = Status.Pass;
+                        _test.Log(logstatus, "Test ended with " + logstatus);
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                throw (e);
+            }
+>>>>>>> Stashed changes
             WebDriver.Quit();
         }
         // ყველა ტესტის წინ
@@ -57,7 +82,7 @@ namespace ExtraAutomation
         [SetUp]
         protected static void DoBeforeEach()
         {
-            
+
             WebDriver = new ChromeDriver(@"D:\GitProj\SeleniumHelper\SeleniumHelper\Driver", _chromeOptions, TimeSpan.FromMinutes(12));
             WebDriver.Navigate().GoToUrl("https://extra.ge/");
             WebDriver.Manage().Window.Maximize();
